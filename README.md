@@ -16,13 +16,10 @@ The goal of this repository is to summarize and organize my knowledge for machin
 **Regression Analysis**
 * 2020-02-17 **`Regression Analysis Part1: Assumptions for Linear Regression`**
     * Multicollinearity | Heteroscedasticity | Auto-Correlation | Error Term Normalization
-  
 * 2020-02-18 **`Regression Analysis Part2: Linear Regression with Regularization`**
     * Naive Linear Regression | Regularization | Lasso/Ridege Regression
-
 * 2020-02-19 **`Regression Analysis Part3: Parametric/Nonparametric regression`**
     * Polynomial Regression | Random Forest Regression | ...
-
 * 2020-02-20 **`Regression Analysis Part4: Loss Functions`**
     * MSE | MAE | RMSE | MBE | MAPE | RMSLE | R² | Adjusted R²
 
