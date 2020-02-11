@@ -21,7 +21,7 @@ The goal of this repository is to summarize and organize my knowledge for machin
 * 2020-02-11 **`Regression Analysis Part2: Regression with Regularization`** [[Notebook]](https://github.com/patrick-ytchou/Machine-Learning/blob/master/Algorithms/Regression/Regression%20Analysis%20Part%202%20--%20Regression%20with%20Regularization.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Machine-Learning/blob/master/Algorithms/Regression/Regression%20Analysis%20Part%202%20--%20Regression%20with%20Regularization.ipynb)
     * Naive Linear Regression | Regularization | Lasso/Ridege Regression
     
-* 2020-02-19 **`Regression Analysis Part3: Parametric/Nonparametric regression`** [[Notebook]](https://github.com/patrick-ytchou/Machine-Learning/blob/master/Algorithms/Regression/Regression%20Analysis%20Part%203%20--%20Parametric%20and%20Nonparametric%20regression.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Machine-Learning/blob/master/Algorithms/Regression/Regression%20Analysis%20Part%203%20--%20Parametric%20and%20Nonparametric%20regression.ipynb)
+* 2020-02-11 **`Regression Analysis Part3: Parametric/Nonparametric regression`** [[Notebook]](https://github.com/patrick-ytchou/Machine-Learning/blob/master/Algorithms/Regression/Regression%20Analysis%20Part%203%20--%20Parametric%20and%20Nonparametric%20regression.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Machine-Learning/blob/master/Algorithms/Regression/Regression%20Analysis%20Part%203%20--%20Parametric%20and%20Nonparametric%20regression.ipynb)
     * Polynomial Regression | Random Forest Regression | ...
     
 * 2020-02-20 **`Regression Analysis Part4: Loss Functions`** `Pending`
