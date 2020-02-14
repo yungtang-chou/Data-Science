@@ -33,6 +33,9 @@ The goal of this repository is to summarize and organize my knowledge for machin
 
 **Optimization Method**
 
+* 2020-02-11 **`Genetic Algorithm from scratch: Traveling Salesman Problem`** `Pending`
+    * Genetic Algorithm | Traveling Salesman Problem 
+
 
 **Model Selection & Explainability**
 
