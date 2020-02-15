@@ -43,7 +43,7 @@ The goal of this repository is to summarize and organize my knowledge for machin
 
 **Other Algorithms**
 
-* 2020-02-15 **`Genetic Algorithm from scratch: Traveling Salesman Problem`** `Pending`
+* 2020-02-15 **`Genetic Algorithm from scratch: Traveling Salesman Problem`** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/Algorithms/Optimization/Genetic%20Algorithm%20from%20Scratch%20--%20Traveling%20Salesman%20Problem.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Algorithms/Optimization/Genetic%20Algorithm%20from%20Scratch%20--%20Traveling%20Salesman%20Problem.ipynb)
     * Genetic Algorithm | Traveling Salesman Problem 
 <p align="center">
 	<img src="https://github.com/patrick-ytchou/Data-Science/blob/master/Algorithms/Optimization/TSP_animation.gif" width=300 height=200/>
