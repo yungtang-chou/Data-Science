@@ -1,11 +1,11 @@
-# Machine-Learning
+# Data Science
 
 As I start my journey in data science, I will continuously update this repository to document my learning. This repository will be divided into three sections: projects and machine learning algorithms, and other special topics.
 
 The goal of this repository is to summarize and organize my knowledge for machine learning. All the codes will be written in Jupyter Notebook format, and should be reproducible by either cloning or downloading the whole repository. The content of the notebook aims to strike a good balance between background knowledge, mathematical formulations, naive algorithm implementation (via numpy, pandas, statsmodels, scipy, matplotlib, seaborn, etc.), and sophisticated implementation through open-source library.
 
 ---
-## Projects
+## Featured Projects
 
 
 
@@ -27,26 +27,40 @@ The goal of this repository is to summarize and organize my knowledge for machin
 * 2020-02-20 **`Regression Analysis Part4: Loss Functions`** `Pending`
     * MSE | MAE | RMSE | MBE | MAPE | RMSLE | R² | Adjusted R²
 
+
+
 **Classification Analysis**
 
 
 
-**Optimization Method**
+**Clustering Analysis**
 
-* 2020-02-11 **`Genetic Algorithm from scratch: Traveling Salesman Problem`** `Pending`
+
+
+**Neural Network**
+
+
+
+**Other Algorithms**
+
+* 2020-02-15 **`Genetic Algorithm from scratch: Traveling Salesman Problem`** `Pending`
     * Genetic Algorithm | Traveling Salesman Problem 
+
+
 
 
 **Model Selection & Explainability**
 
 
-**Feature Engineering**
 
 
-**Deep Learning**
+**Feature Engineering Technique**
+
+
 
 
 
 ---
 ## Speical Topics
+
 
