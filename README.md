@@ -45,8 +45,9 @@ The goal of this repository is to summarize and organize my knowledge for machin
 
 * 2020-02-15 **`Genetic Algorithm from scratch: Traveling Salesman Problem`** `Pending`
     * Genetic Algorithm | Traveling Salesman Problem 
-<img src="https://github.com/patrick-ytchou/Data-Science/blob/master/Algorithms/Optimization/TSP_animation.gif" width=400 height=200/>
-
+<p align="center">
+	<img src="https://github.com/patrick-ytchou/Data-Science/blob/master/Algorithms/Optimization/TSP_animation.gif" width=400 height=200/>
+</p>
 
 
 **Model Selection & Explainability**
