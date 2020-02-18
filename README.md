@@ -6,7 +6,7 @@ The goal of this repository is to summarize and organize my knowledge for machin
 
 ---
 ## Featured Projects
-### General Framework: 
+General Framework: [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/Projects/Project%20Templates.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Projects/Project%20Templates.ipynb)
 
 
 ---
