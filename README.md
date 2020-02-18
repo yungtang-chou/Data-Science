@@ -6,8 +6,7 @@ The goal of this repository is to summarize and organize my knowledge for machin
 
 ---
 ## Featured Projects
-
-
+### General Framework: 
 
 
 ---
@@ -57,44 +56,6 @@ The goal of this repository is to summarize and organize my knowledge for machin
 
 **Feature Engineering Technique**
 
-
-
----
-## General Framework
-
-Credit to the wonderful post [Don’t Do Data Science, Solve Business Problems](https://towardsdatascience.com/dont-do-data-science-solve-business-problems-6b70c4ee0083) by [Cameron Warren
-](https://towardsdatascience.com/@camwarrenm), as well as the post[Solve Business Problems with Data Science](https://medium.com/@jameschen_78678/solve-business-problems-with-data-science-155534b1995d) by [James Chen](https://medium.com/@jameschen_78678),  it's important not to learn how to implement machine learning models, but to solve real business problems. 
-
-In this section, in each project I will follow the general framework below:
-
-1. **`Define Business Problems`**
-
-The main goal here is to clearly define what the busines problems are. If there's no clear business value or strategic goal, all the work will be simply futile. Defining the main goal in advance also helps limiting the scope of the problem, making it possible to solve a complicated business problem piece by piece. Only after clarifying the business problem can we understand what to do next.
-
-2. **`Outline Analytics Objectives`**
-
-There are plenty of algorithms out there that might suit your problem, or probably only a limited amount of them fit in. It's data scientist's responsibility to define the objective of this problem and which model to implement. Is supervised or unsupervised more applicable? Is this a regression problem or a classification one? How should I define the target metric if there's no clear one?
-
-Step 1 and 2 can be an iterativd process, as the initial business problem might be infeasible or not well-defined. Only after the problem and object are well-defined can we start the modeling process.
-
-
-3. **`Prepare Data for Modeling`**
-
-This process includes **Data Collection**, **Data cleansing** and **Feature Engineering**.
-
-In the real world data collection is an important topic, especially for those companies that are not internet-based. In this repository, most of the data are collected via open data sources and will be pointed out to maintain reproducibility. I will also try to discuss some idea about how to collect data in practice.
-
-Data cleansing and feature enginnering are known to be the processes that require the most amount of time, especially in the real world. I will try to go through these complex process via concise code with reasoning.
-
-
-4. **`Develop Machine Learning Model`**
-
-In this section I will compile the model to solve this problem. The complexity of the model depends on whether the main idea of this topic is about the model itself. If not, simple and quick benchmark model will be implemented and will likely not be optimized.
-
-
-5. **`Evaluation and Notes for Future Improvement`**
-
-In this last section, I will try to evaluate our result based on the business problem defined in the first step. Does our solution really solve the problem at hand? What are some other potential improvements that can work better? Different modeling technique? Another analytics objectives?
 
 ---
 ## Pending Topics
