@@ -11,7 +11,7 @@ General Framework: [[Notebook]](https://github.com/patrick-ytchou/Data-Science/b
 * 2020-02-24 **`Yelp Review Analysis: Sentiment Analysis & Topic Modeling`** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/Projects/YelpReviewAnalysis/Yelp%20Review%20Analysis%20--%20Sentiment%20Analysis%20%26%20Topic%20Modeling.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Projects/YelpReviewAnalysis/Yelp%20Review%20Analysis%20--%20Sentiment%20Analysis%20%26%20Topic%20Modeling.ipynb) | [[Vizualization]]()
     * Sentiment Analysis (Textblob, VADER, Afinn)| Topic Modeling | Natural Language Processing 
 
-
+```html
 <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/bmabey/pyLDAvis/files/ldavis.v1.0.0.css">
 
 
@@ -52,7 +52,7 @@ if(typeof(LDAvis) !== "undefined"){
          });
 }
 </script>
-
+```
 
 
 ---
