@@ -57,6 +57,11 @@ General Framework: [[Notebook]](https://github.com/patrick-ytchou/Data-Science/b
 **Feature Engineering Technique**
 
 
+
+**Speical Topics**
+
+* 2020-02-21 **`Market Basket Analysis: Association Rule Mining`** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/Special-Topics/AssociationRules/Market%20Basket%20Analysis%20--%20Association%20Rule%20Explained.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Special-Topics/AssociationRules/Market%20Basket%20Analysis%20--%20Association%20Rule%20Explained.ipynb)
+
 ---
 ## Pending Topics
 
