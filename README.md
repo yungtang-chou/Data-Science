@@ -45,7 +45,7 @@ General Framework: [[Notebook]](https://github.com/patrick-ytchou/Data-Science/b
 
 
 **Neural Network**
-* 2020-03-03 **`Tips for Neural Network Training`** [[Notebook]]() | [[nbviewer]]()
+* 2020-03-03 **`Tips for Neural Network Training`** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/Algorithms/NeuralNetwork/Tips%20for%20Neural%20Network%20Training.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Algorithms/NeuralNetwork/Tips%20for%20Neural%20Network%20Training.ipynb)
 	* Activation Function | Optimizer | EarlyStopping | Regularization | Dropout
 
 **Optimization Techniques**
