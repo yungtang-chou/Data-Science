@@ -5,6 +5,11 @@ As I start my journey in data science, I will continuously update this repositor
 The goal of this repository is to summarize and organize my knowledge for machine learning. All the codes will be written in Jupyter Notebook format, and should be reproducible by either cloning or downloading the whole repository. The content of the notebook aims to strike a good balance between background knowledge, mathematical formulations, naive algorithm implementation (via numpy, pandas, statsmodels, scipy, matplotlib, seaborn, etc.), and sophisticated implementation through open-source library.
 
 ---
+## Resources
+
+
+
+---
 ## Featured Projects
 General Framework: [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/Projects/Project%20Templates.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Projects/Project%20Templates.ipynb)
 
@@ -40,8 +45,8 @@ General Framework: [[Notebook]](https://github.com/patrick-ytchou/Data-Science/b
 
 
 **Neural Network**
-
-
+* 2020-03-03 **`Tips for Neural Network Training`** [[Notebook]]() | [[nbviewer]]()
+	* Activation Function | Optimizer | EarlyStopping | Regularization | Dropout
 
 **Optimization Techniques**
 
