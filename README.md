@@ -8,7 +8,7 @@ The goal of this repository is to summarize and organize my knowledge for machin
 ## Featured Projects
 General Framework: [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/Projects/Project%20Templates.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Projects/Project%20Templates.ipynb)
 
-* 2020-02-24 **`Yelp Review Analysis: Sentiment Analysis & Topic Modeling`** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/Projects/YelpReviewAnalysis/Yelp%20Review%20Analysis%20--%20Sentiment%20Analysis%20%26%20Topic%20Modeling.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Projects/YelpReviewAnalysis/Yelp%20Review%20Analysis%20--%20Sentiment%20Analysis%20%26%20Topic%20Modeling.ipynb)
+* 2020-02-24 **Yelp Review Analysis: Sentiment Analysis & Topic Modeling** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/Projects/YelpReviewAnalysis/Yelp%20Review%20Analysis%20--%20Sentiment%20Analysis%20%26%20Topic%20Modeling.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Projects/YelpReviewAnalysis/Yelp%20Review%20Analysis%20--%20Sentiment%20Analysis%20%26%20Topic%20Modeling.ipynb)
     * Sentiment Analysis (Textblob, VADER, Afinn)| Topic Modeling | Natural Language Processing 
 
 
