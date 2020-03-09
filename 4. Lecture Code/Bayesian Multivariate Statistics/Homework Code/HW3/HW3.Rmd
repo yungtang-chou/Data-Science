@@ -1,0 +1,369 @@
+---
+title: "Multivariate Analysis HW3 _ b04704017"
+author: "Yung-Tang Chou"
+date: "2019年4月10日"
+output: word_document
+---
+
+Here is the rmarkdown file for the Multivariate Analysis Homework3.
+
+Before we start let's import some libraries
+```{r , results='hide'}
+library(rstan)
+library(rethinking)
+data(foxes)
+d <- foxes
+
+attach(foxes)
+```
+-------------------------------------------------------------------------
+For Question 1
+
+We will use rstan to build the model for this bivariate Gaussian regressions.
+
+For the first model (model.01), let's build a model for the relationship between body weight and area.
+```{r}
+model.01 <- "
+data {
+int<lower=0> N;
+vector[N] weight;
+vector[N] area;
+}
+parameters {
+real a;
+real bA;
+real<lower=0, upper=3> sigma;
+}
+model {
+vector[N] mu = a + bA * area;
+
+weight ~ normal(mu, sigma);
+a ~ normal(3, 2);
+bA ~ normal(0, 2);
+sigma ~ uniform(0,3);
+}"
+```
+
+We make up another data in order to put into the stan model fit.01.
+We use 2 cores and 2 chains, with 10,000 iteration.
+```{r}
+data <- list(
+  N = NROW(d),
+  weight = d$weight,
+  area = d$area
+)
+
+fit.01 <- stan(model_code = model.01, data = data, cores = 2, chains = 2, iter = 1e4)
+```
+
+After the model is fitted, simply use the `extract` command to extract samples from the fitted model.
+Then we use the relationship along with samples to find out the "mu" of the prediceted body weight.
+```{r}
+la <- extract(fit.01, permuted = TRUE)
+mu.link <- function(area) la$a + la$bA * area
+```
+
+When it's done, let's start drawing the plot for the relationship.
+```{r}
+xseq <- seq(from = min(d$area)-0.3, to=max(d$area)+0.3, length.out = 1e4)
+mu <- sapply(xseq, mu.link)
+mu.mean <- apply(mu, 2, mean)
+mu.PI <- apply(mu, 2, PI, prob=.95)
+```
+
+```{r, echo=FALSE}
+plot(weight ~ area, data = d, main = 'Relationship between Weight & Area')
+lines(xseq, mu.mean, lwd=2)
+shade(mu.PI, xseq)
+```
+
+Let's use the command `precis` to look into this model.
+```{r, echo=FALSE}
+precis(fit.01)
+```
+From the output we can tell that the relationship between body weight and merely area is low, with the mean slope being only 0.04.
+
+
+
+Now let's move on to the linear model of body weight and groupsize.
+Similarly, let's start by building the stan model and the needed data for this relationship.
+```{r}
+model.02 <- "
+data {
+int<lower=0> N;
+vector[N] weight;
+vector[N] groupsize;
+}
+parameters {
+real a;
+real bG;
+real<lower=0, upper=3> sigma;
+}
+model {
+vector[N] mu = a + bG * groupsize;
+
+weight ~ normal(mu, sigma);
+a ~ normal(3, 2);
+bG ~ normal(0, 2);
+sigma ~ uniform(0,3);
+}"
+
+data.02 <- list(
+  N = NROW(d),
+  weight = d$weight,
+  groupsize = d$groupsize
+)
+```
+
+Once it's done, we put the data into the stan model model.02
+Likewise, We choose 2 cores and 2 chains, with 10,000 iteration for our fitted model fit.02.
+```{r}
+fit.02 <- stan(model_code = model.02, data = data.02, cores = 2, chains = 2, iter = 1e4)
+```
+
+After the model is fitted, simply use the `extract` command to extract samples from the fitted model.
+Then we use the relationship along with samples to find out the "mu" of the prediceted body weight.
+After that comes the plotting.
+```{r}
+la <- extract(fit.02, permuted = TRUE)
+mu.link <- function(groupsize) la$a + la$bG * groupsize
+
+xseq <- seq(from = min(d$groupsize), to=max(d$groupsize), length.out = 1e4)
+mu <- sapply(xseq, mu.link)
+mu.mean <- apply(mu, 2, mean)
+mu.PI <- apply(mu, 2, PI, prob=.95)
+```
+
+```{r, echo=FALSE}
+plot(weight ~ groupsize, data = d, main = 'Relationship between Weight & Groupsize')
+lines(xseq, mu.mean, lwd=2)
+shade(mu.PI, xseq)
+```
+
+
+Again, let's use the command `precis` to look into this model.
+```{r, echo=FALSE}
+precis(fit.02)
+```
+From the output we can tell that the relationship between body weight and groupsize is slightly higher than that of body weight and area. However, the variable is still considered not important for predicting body weight.
+
+
+To sum up, for model.01 (body weight vs. area) we can see the relationship between the two variables is quite low.
+We can conclude that one cannot use variable "Area" to predict body weight effectively.
+Likewise, for model.02 (body weight vs. groupsize), though the correlation is somhow slightly higher, it is still low.
+As a result, both Area and Groupsize are not important for predicting Body Weight.
+
+-------------------------------------------------------------------------
+For Question 2
+
+For this question I am going to plot two counterfactural plots.
+Before continuing, let's standadize variables needed first.
+```{r, results='hide'}
+d$A <- scale(d$area)
+d$G <- scale(d$groupsize)
+d$W <- scale(d$weight)
+attach(d)
+```
+
+For later comparison, let's divide the plotting area into two part.
+```{r, results='hide'}
+par(mfrow=c(1,2))
+```
+
+
+The first one is for the model of "Weight vs. Area", holding Groupsize at its mean.
+First, let's create the data for the counterfactural plot, along with the model.
+Note that of the pred_data_1, we keep groupsize at its mean, using 'G = mean(d$G)'.
+```{r}
+CFP_seq <- seq(from=-3, to=3, length.out = 1e4)
+pred_data_1 <- data.frame(A = CFP_seq, G = mean(d$G))
+model.03 <- quap(
+  alist(
+    W ~ dnorm(mu,sigma),
+    mu <- a + bA * A + bG * G,
+    a ~ dnorm(0,0.2),
+    bA ~ dnorm(0,0.5),
+    bG ~ dnorm(0,0.5),
+    sigma ~ dexp(1)
+  ), data = pred_data_1
+)
+```
+
+With the "link" command, we can fit the model with data prepared for this counterfactural plot.
+```{r}
+mu_model.03 <- link(model.03, data = pred_data_1)
+mu_mean.03 <- apply(mu_model.03, 2, mean)
+mu_PI.03 <- apply(mu_model.03, 2, PI, prob=.89)
+```
+
+We can simulate counterfactural outcome using the 'sim' command.
+Meanwhile, we draw the Percentage Interval of the simulated outcome.
+```{r}
+D_sim.03 <- sim(model.03, data= pred_data_1, n=1e4)
+D_PI.03 <- apply(D_sim.03, 2, PI)
+```
+
+Let's draw the plot for the model "Weight vs. Area", holding Groupsize at its mean.
+```{r, echo=FALSE}
+plot(W ~ A, data = d)
+mtext("Groupsize hold constant at the mean",cex = 1.4)
+lines(CFP_seq, mu_mean.03)
+shade(mu_PI.03, CFP_seq)
+shade(D_PI.03, CFP_seq)
+```
+From the plot we can tell that there's no relationship between weight and area, holding groupsize at its mean.
+
+
+The second model is for the model "Weight vs. Groupsize", holding Area at its mean.
+First, let's create the data for the counterfactural plot, along with the model.
+Note that of the pred_data_2, we keep area at its mean, using 'A = mean(d$A)'.
+```{r}
+pred_data_2 <- data.frame(G = CFP_seq, A = mean(d$area))
+model.04 <- quap(
+  alist(
+    W ~ dnorm(mu,sigma),
+    mu <- a + bA * A + bG * G,
+    a ~ dnorm(0,0.2),
+    bA ~ dnorm(0,0.5),
+    bG ~ dnorm(0,0.5),
+    sigma ~ dexp(1)
+  ), data = pred_data_2
+)
+```
+
+
+Similarly, with the "link" command, we can fit the model with data prepared for this counterfactural plot.
+```{r}
+mu_model.04 <- link(model.04, data = pred_data_2)
+mu_mean.04 <- apply(mu_model.04,2, mean)
+mu_PI.04 <- apply(mu_model.04, 2, PI, prob=.89)
+```
+
+Then we keep on simulating counterfactural outcome and display the predictions.
+```{r}
+#Simulate counterfactural outcome
+D_sim.04 <- sim(model.04, data=pred_data_2, n=1e4)
+D_PI.04 <- apply(D_sim.04, 2, PI)
+```
+
+```{r, echo=FALSE}
+plot(W ~ G, data = d)
+mtext("Area hold constant at the mean", cex= 1.4)
+lines(CFP_seq, mu_mean.04)
+shade(mu_PI.04, CFP_seq)
+shade(D_PI.04, CFP_seq)
+```
+
+
+From the plot, again we can tell that there's no relationship between weight and groupsize, holding area at its mean.
+
+To sum up, with the help of counterfactural plot, we know that both groupsize and area are not important variables that can be used to predict body weight.
+
+Though slightly correlation exists in Question 1 for both variables, from the counterfactural plot we can tell that both variables cannot be an important factor when predicting body weight only by itself.
+
+-------------------------------------------------------------------------
+For Question 3
+
+Finally we include variable avgfood into consideration. 
+For Question 3-1, let's find out whether avgfood by itself can be a significant predictor for body weight.
+```{r, results='hide'}
+d$AVG <- scale(d$avgfood)
+attach(d)
+```
+
+```{r}
+model.05 <- quap(
+  alist(
+    W ~ dnorm(mu,sigma),
+    mu <- a + bAVG * AVG,
+    a ~ dnorm(0,0.2),
+    bAVG ~ dnorm(0,0.5),
+    sigma ~ dexp(1)
+  ), data = d
+)
+```
+
+```{r, echo=FALSE}
+precis(model.05)
+```
+For the table above we can tell that simply by avgfood itself cannot be a good predictor.
+
+
+
+Let's compare the two model, 'Weight as a function of avgfood and groupsize' and 'Weight as a function of area and groupsize'.
+
+First, let's build a model for Weight, avgfood, and groupsize.
+```{r}
+model.06 <- quap(
+  alist(
+    W ~ dnorm(mu,sigma),
+    mu <- a + bAVG * AVG + bG * G,
+    a ~ dnorm(0,0.2),
+    bAVG ~ dnorm(0,0.5),
+    bG ~ dnorm(0,0.5),
+    sigma ~ dexp(1)
+  ), data = d
+)
+```
+
+```{r, echo=FALSE}
+precis(model.06)
+```
+From the result we can tell that within this model there are significant correlations.
+
+Let's continue building model for Weight, area, and groupsize.
+```{r}
+model.07 <- quap(
+  alist(
+    W ~ dnorm(mu,sigma),
+    mu <- a + bA * A + bG * G,
+    a ~ dnorm(0,0.2),
+    bA ~ dnorm(0,0.5),
+    bG ~ dnorm(0,0.5),
+    sigma ~ dexp(1)
+  ), data = d
+)
+```
+
+```{r, echo=FALSE}
+precis(model.07)
+```
+
+```{r, echo=FALSE}
+plot(coeftab(model.06, model.07), par = c("bA","bAVG"))
+mtext("Comparisons with W ~ Avg, G / W ~ A, G")
+```
+From the result, again we find out that within this model there are significant correlations.
+
+In the models above, both of them show significant relationships for the body weight.
+Avgfood, along with groupsize, can be an important set of predictors.
+Likewise, area, along with groupsize, can be an important set of predictors.
+
+
+For Question 3-2, 
+let's create a model consisting all three variables: avgfood, area, and groupsize.
+
+```{r}
+model.08 <- quap(
+  alist(
+    W ~ dnorm(mu,sigma),
+    mu <- a + bA * A + bG * G + bAVG * AVG,
+    a ~ dnorm(0,0.2),
+    bA ~ dnorm(0,0.5),
+    bG ~ dnorm(0,0.5),
+    bAVG ~ dnorm(0,0.5),
+    sigma ~ dexp(1)
+  ), data = d
+)
+```
+
+```{r, echo=FALSE}
+precis(model.08)
+```
+From the table above we can tell that with all three variables, there seems to be relationships between body weight and each variable. We can simply conclude that there are masked associations at first.
+
+Before we end this question, we can draw a plot to compare the three models.
+```{r, echo=FALSE}
+plot(coeftab(model.06, model.07, model.08), par = c("bA","bAVG"))
+mtext("Comparisons with W ~ Groupsize, Area, and Avgfood", cex = 1.4)
+```

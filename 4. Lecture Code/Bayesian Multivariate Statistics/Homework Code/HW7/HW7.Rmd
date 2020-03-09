@@ -1,0 +1,737 @@
+---
+title: "Assignment7"
+author: "Yung-Tang Chou"
+date: "2019年6月5日"
+output: word_document
+---
+Here is the rmarkdown file for the Multivariate Analysis Assignment 7.
+
+The data is regarding the disastrousness of Hurricanes, modeling with the feminity of names, storm damage and the minimun pressure. Before doing the modeling first let's import needed libraries.
+```{r , results='hide'}
+library(rstan)
+library(rethinking)
+library(loo)
+library(skimr)
+```
+
+Let's import the data. To improve the effectiveness of modeling, let's do nomalization for dependent variables, femininity, damage_norm, and min_pressure. Code is as below.
+```{r}
+data("Hurricanes")
+Hurricanes$damage_norm_std <- 
+  (Hurricanes$damage_norm - mean(Hurricanes$damage_norm)) / sd(Hurricanes$damage_norm)
+Hurricanes$femininity_std <- 
+  (Hurricanes$femininity - mean(Hurricanes$femininity)) / sd(Hurricanes$femininity)
+Hurricanes$min_pressure_std <- 
+  (Hurricanes$min_pressure - mean(Hurricanes$min_pressure)) / sd(Hurricanes$min_pressure)
+```
+
+A basic summary statistics is shown below.
+```{r, echo = FALSE}
+skim(Hurricanes)
+```
+
+< Question 1 >
+For question 1, we want to model do a Poisson model using femininity as a predictor. 
+
+The model is shown below.
+```{r}
+model.01.code <- "
+data{
+    int N;
+int d[92];
+vector[92] fem;
+}
+parameters{
+real a;
+real bf;
+}
+model{
+vector[92] lambda;
+bf ~ normal( 0 , 3 );
+a ~ normal( 0 , 3 );
+for ( i in 1:92 ) {
+lambda[i] = a + bf * fem[i];
+lambda[i] = exp(lambda[i]);
+}
+d ~ poisson( lambda );
+}
+generated quantities{
+vector[92] log_lik;
+vector[92] lambda;
+for ( i in 1:92 ) {
+lambda[i] = a + bf * fem[i];
+lambda[i] = exp(lambda[i]);
+}
+for ( i in 1:92 ) log_lik[i] = poisson_lpmf( d[i] | lambda[i] );
+}
+"
+```
+Note that within the generated quantities block, the log_lik is also calculated.
+
+
+Now we are going to run the stan model. Before doing so, to prevent stan model from crashing, we form a specific dataset for the stan model. Code is shown below.
+```{r}
+d.01 <- list(
+  N = NROW(Hurricanes),
+  fem = Hurricanes$femininity_std,
+  d = Hurricanes$deaths
+)
+```
+For the stan model, we will use "d.01" generated above as the input data, and use four markov chains to do the modeling. In this cases, we do four chains with four cores.
+
+The model code is shown below.
+```{r}
+model.01 <- stan(model_code = model.01.code, data = d.01,
+                 cores = 4, chains = 4)
+```
+
+The descriptions of the model is shown below, using print statement.
+```{r}
+print(model.01, include=FALSE, pars=c('log_lik','lambda'), probs = c(.1, .5, .9))
+```
+Rhat = 1 means that the model can reach convergence in this Markov Chain. n_eff is greater than 2000, which implys a pretty solid model. From the description we can know that the femininity of the Hurricanes' name is positive related to the death tolls, with the intercept being around 3.00.
+
+It would be a good idea to check whether the stan model is decent graphically. In order to do that we use traceplot to see if all the params lie in a specific range. The code is as below.
+```{r}
+traceplot(model.01, pars = c('a','bf'))
+```
+From the traceplot above we can easily tell that the model converges.
+
+Besides, let's see the distribution of the model params using pairplot. The code is as below.
+```{r}
+pairs(model.01, pars = c('a','bf'))
+```
+From the plots above, we can tell the following things.
+1. The stan model converges properly. The traceplot shows that all the values lie in a specific range, which is the desired outcome.
+2. The pairplot shows that the distribution of param bf is a little bit right-skewed.
+
+Now it's time to evaluate the model. In this question we use try to use waic to examine the model's effectiveness. Code is shown below.
+```{r}
+log_lik_01 <- extract_log_lik(model.01, merge_chains = FALSE)
+waic_01 <- waic(log_lik_01)
+```
+We will do the comparison with another model later.
+
+# -------
+
+Let's conduct another model using merely intercept. The code is shown below.
+```{r}
+model.02.code <- "
+data{
+    int N;
+int d[92];
+}
+parameters{
+real a;
+}
+model{
+real lambda;
+a ~ normal( 0 , 3 );
+lambda = a;
+lambda = exp(lambda);
+d ~ poisson( lambda );
+}
+generated quantities{
+vector[92] log_lik;
+real lambda;
+lambda = a;
+lambda = exp(lambda);
+for ( i in 1:92 ) log_lik[i] = poisson_lpmf( d[i] | lambda );
+}
+"
+```
+
+Again to avoid the stan model from crashing, we will form a specific dataframe serving as the input dataframe.
+Code is shown below.
+```{r}
+d.02 <- list(
+  N = NROW(Hurricanes),
+  d = Hurricanes$deaths)
+```
+For the stan model, we will use "d.02" generated above as the input data, and use four markov chains to do the modeling. In this cases, we do four chains with four cores.
+
+The model code is shown below.
+```{r}
+model.02 <- stan(model_code = model.02.code, data = d.02,
+                 cores = 4, chains = 4)
+```
+
+The descriptions of the model is shown below, using print statement.
+```{r}
+print(model.02, include=FALSE, pars=c('log_lik','lambda'), probs = c(.1, .5, .9))
+```
+Rhat = 1 means that the model can reach convergence in this Markov Chain. n_eff is greater than 1000, which implys a pretty solid model. From the description we can know that the with the model using intercept as the only predictor, the intercept wil be around 3.03.
+
+Similarly let's take a look at the traceplot to evaluate the decentness of the model.
+```{r}
+traceplot(model.02, pars = c('a'))
+```
+From the traceplot above we can easily tell that the model converges.
+With only intercept, we cannot use pairplot to evaluate the effectiveness.
+
+From the plots above, we can tell that the stan model converges properly. The traceplot shows that all the values lie in a specific range, which is the desired outcome..
+
+Again we use waic to evaluate model.02 and then compare model.01 and model.02.
+```{r}
+log_lik_02 <- extract_log_lik(model.02, merge_chains = FALSE)
+waic_02 <- waic(log_lik_02)
+```
+
+Let's compare the two models by using the compare function in the rethinking package. Code is shown below.
+```{r}
+rethinking::compare(model.01, model.02)
+```
+
+From the output we can see the model using femininity as predictor is performing way better than that using only intercept. Let's fit the model with the data to have a clearer view of the model effectiveness. First is to extract samples from the stan model and calculate the mean and PI. Code is shown below.
+```{r}
+post <- extract.samples(model.01)
+post.mean <- apply(post$lambda, 2, mean)
+post.PI <- apply(post$lambda, 2, PI, prob=.89)
+```
+
+Then we do the plotting accordingly. Code is shown below.
+```{r}
+plot(y=Hurricanes$deaths, x=Hurricanes$femininity, col=rangi2, ylab="deaths", xlab="femininity", pch=16)
+points(y=post.mean, x = Hurricanes$femininity, col = 'black', cex = 0.5)
+segments(x0=Hurricanes$femininity, x1= Hurricanes$femininity, y0=post.PI[1,], y1=post.PI[2,])
+lines(y= post.mean[order(Hurricanes$femininity)],  x=sort(Hurricanes$femininity))
+lines( post.PI[1,order(Hurricanes$femininity)],  x=sort(Hurricanes$femininity), lty=2 )
+lines( post.PI[2,order(Hurricanes$femininity)],  x=sort(Hurricanes$femininity), lty=2 )
+```
+From the plotting you can see there are some outliers on the top right corner, which do not fit the model well. The relationship isn’t very strong, but still slightly positive. The outliers in the meantime shows the same trend.
+
+# --------
+
+< Question 2 >
+As the problem description says, counts are nearly always over-dispersed relative to Poisson. Therefore, we are going to fit a gamma-Poisson model to predict deaths. In this model we again use femininity as the predictor.
+
+The stan model for the gamma-Poisson model is shown below.
+```{r}
+model.03.code <- "
+data{
+    int N;
+int d[92];
+vector[92] fem;
+}
+parameters{
+real a;
+real bf;
+real phi;
+}
+model{
+vector[92] lambda;
+phi ~ cauchy( 0 , 3 );
+bf ~ normal( 0 , 5 );
+a ~ normal( 0 , 10 );
+for ( i in 1:92 ) {
+lambda[i] = a + bf * fem[i];
+lambda[i] = exp(lambda[i]);
+}
+d ~ neg_binomial_2( lambda , phi );
+}
+generated quantities{
+vector[92] log_lik;
+vector[92] lambda;
+for ( i in 1:92 ) {
+lambda[i] = a + bf * fem[i];
+lambda[i] = exp(lambda[i]);
+}
+for ( i in 1:92 ) log_lik[i] = neg_binomial_2_lpmf( d[i] | lambda[i] , phi );
+}
+"
+```
+Note that within the generated quantities block, the log_lik is also calculated.
+
+
+To prevent stan model from crashing, we form a specific dataset for the stan model. Code is shown below.
+```{r}
+d.03 <- list(
+  N = NROW(Hurricanes),
+  fem = Hurricanes$femininity_std,
+  d = Hurricanes$deaths
+)
+```
+For the stan model, we will use "d.03" generated above as the input data, and use four markov chains to do the modeling. In this cases, we do four chains with four cores.
+
+The model code is shown below.
+```{r}
+model.03 <- stan(model_code = model.03.code, cores = 4, chains = 4, data = d.03)
+```
+
+The descriptions of the model is shown below, using print statement.
+```{r}
+print(model.03, include=FALSE, pars=c('log_lik','lambda'), probs = c(.05, .5, .95))
+```
+Rhat = 1 means that the model can reach convergence in this Markov Chain. n_eff is greater than 3000, which implys an extremely solid model. We can see that the confidence interval for bf overlaps zero, which implys that there is no significant possitive association between femininity and death.
+
+# -------
+
+< Question 3 >
+In this question we add two potential candidate predictors - minimum pressure (min_pressure) and nomalized estimate of damage (damage_norm). In this question we want to see the interaction effects between the two and femininity.
+
+Before formulating the model, again let's create a dataframe solely for the stan model to prevent it from crashing. Code is shown below.
+```{r}
+d.04 <- list(
+  N = NROW(Hurricanes),
+  fem = Hurricanes$femininity_std,
+  d = Hurricanes$deaths,
+  mp = Hurricanes$min_pressure_std,
+  dm = Hurricanes$damage_norm_std
+)
+```
+
+
+For the first model, let's assume that there's an interaction effect between min_pressure and femininity. The model is written as below.
+```{r}
+model.04.1.code <-"
+data{
+    vector[92] dm;
+int N;
+int d[92];
+vector[92] mp;
+vector[92] fem;
+}
+parameters{
+real a;
+real bf;
+real bmp;
+real bfmp;
+real phi;
+}
+model{
+vector[92] lambda;
+phi ~ cauchy( 0 , 1 );
+bfmp ~ normal( 0 , 3 );
+bf ~ normal( 0 , 3 );
+bmp ~ normal( 0 , 3 );
+a ~ normal( 0 , 3 );
+for ( i in 1:92 ) {
+lambda[i] = a + bf * fem[i] + bmp * mp[i] + bfmp * fem[i] * mp[i];
+lambda[i] = exp(lambda[i]);
+}
+d ~ neg_binomial_2( lambda , phi );
+}
+generated quantities{
+vector[92] log_lik;
+vector[92] lambda;
+for ( i in 1:92 ) {
+lambda[i] = a + bf * fem[i] + bmp * mp[i] + bfmp * fem[i] * mp[i];
+lambda[i] = exp(lambda[i]);
+}
+for ( i in 1:92 ) log_lik[i] = neg_binomial_2_lpmf( d[i] | lambda[i] , phi );
+}
+"
+```
+
+The model code is shown below.
+```{r}
+model.04.1 <- stan(model_code = model.04.1.code, data = d.04, cores = 4, chains = 4)
+```
+
+The descriptions of the model is shown below, using print statement.
+```{r}
+print(model.04.1, include=FALSE, pars=c('log_lik','lambda'), probs = c(.1, .5, .9))
+```
+Rhat = 1 means that the model can reach convergence in this Markov Chain. n_eff is greater than 4000, which implys an extremely solid model. We can see that femininity again is positively related to deaths tolls, while min_pressure is strongly negatively related to deaths. To add on, the interaction effects is positively related to deaths, all above with the intercept of 2.78, not too far away from the model without these two new predictors.
+
+Before moving on to the next model, let's take a look at the traceplot to evaluate the decentness of the model.
+```{r}
+traceplot(model.04.1, pars = c('a','bf','bmp','bfmp','phi'))
+```
+From the traceplot above we can easily tell that the model converges.
+
+
+Let's build the second model, assuming there's an interaction effect between damage_norm and femininity. The model code is written as below.
+```{r}
+model.04.2.code <-"
+data{
+    vector[92] mp;
+int N;
+int d[92];
+vector[92] dm;
+vector[92] fem;
+}
+parameters{
+real a;
+real bf;
+real bdm;
+real bfdm;
+real phi;
+}
+model{
+vector[92] lambda;
+phi ~ cauchy( 0 , 1 );
+bfdm ~ normal( 0 , 3 );
+a ~ normal( 0 , 3 );
+for ( i in 1:92 ) {
+lambda[i] = a + bf * fem[i] + bdm * dm[i] + bfdm * fem[i] * dm[i];
+lambda[i] = exp(lambda[i]);
+}
+d ~ neg_binomial_2( lambda , phi );
+}
+generated quantities{
+vector[92] log_lik;
+vector[92] lambda;
+for ( i in 1:92 ) {
+lambda[i] = a + bf * fem[i] + bdm * dm[i] + bfdm * fem[i] * dm[i];
+lambda[i] = exp(lambda[i]);
+}
+for ( i in 1:92 ) log_lik[i] = neg_binomial_2_lpmf( d[i] | lambda[i] , phi );
+}
+"
+```
+
+The model code is shown below.
+```{r}
+model.04.2 <- stan(model_code = model.04.2.code, data = d.04, cores = 4, chains = 4)
+```
+
+The descriptions of the model is shown below, using print statement.
+```{r}
+print(model.04.2, include=FALSE, pars=c('log_lik','lambda'), probs = c(.1, .5, .9))
+```
+Rhat = 1 means that the model can reach convergence in this Markov Chain. n_eff is greater than 4000, which implys an extremely solid model. Within this model we can figure out these ideas:
+1. Femininity is slightly positively related to death tolls. In this case is not that obvious compared to the formal ones.
+2. damage_norm is strongly positively related to death tolls, which is quite intuitive by the nature of the predictor.
+3. The interaction effects again is positively related to the death toll.
+
+Before moving on to the next model, let's take a look at the traceplot to evaluate the decentness of the model.
+```{r}
+traceplot(model.04.2, pars = c('a','bf','bdm','bfdm','phi'))
+```
+From the traceplot above we can easily tell that the model converges.
+
+
+Let's move on to the third model, with two interaction effects all included. The model is described below.
+```{r}
+model.04.3.code <-"
+data{
+    int N;
+int d[92];
+vector[92] mp;
+vector[92] dm;
+vector[92] fem;
+}
+parameters{
+real a;
+real bf;
+real bdm;
+real bmp;
+real bfdm;
+real bfmp;
+real phi;
+}
+model{
+vector[92] lambda;
+phi ~ cauchy( 0 , 1 );
+bf ~ normal( 0 , 3 );
+bmp ~ normal( 0 , 3 );
+bdm ~ normal( 0 , 3 );
+bfmp ~ normal( 0 , 3 );
+bfdm ~ normal( 0 , 3 );
+a ~ normal( 0 , 3 );
+for ( i in 1:92 ) {
+lambda[i] = a + bf * fem[i] + bdm * dm[i] + bmp * mp[i] + bfdm * fem[i] * dm[i] + bfmp * fem[i] * mp[i];
+lambda[i] = exp(lambda[i]);
+}
+d ~ neg_binomial_2( lambda , phi );
+}
+generated quantities{
+vector[92] log_lik;
+vector[92] lambda;
+for ( i in 1:92 ) {
+lambda[i] = a + bf * fem[i] + bdm * dm[i] + bmp * mp[i] + bfdm * fem[i] * dm[i] + bfmp * fem[i] * mp[i];
+lambda[i] = exp(lambda[i]);
+}
+for ( i in 1:92 ) log_lik[i] = neg_binomial_2_lpmf( d[i] | lambda[i] , phi );
+}
+"
+```
+
+The model code is shown below.
+```{r}
+model.04.3 <- stan(model_code = model.04.3.code, data = d.04, cores = 4, chains = 4)
+```
+
+The descriptions of the model is shown below, using print statement.
+```{r}
+print(model.04.3, include=FALSE, pars=c('log_lik','lambda'), probs = c(.1, .5, .9))
+```
+Rhat = 1 means that the model can reach convergence in this Markov Chain. n_eff is greater than 2000, which implys an  solid model. Within this model we can figure out these ideas:
+1. Femininity is slightly positively related to death tolls. In this case still it is not that obvious.
+2. Damage_norm is still strongly positively related to death tolls, which is quite intuitive by the nature of the predictor. However, this correlation is slightly lower than the previous model, which does not include the effect of min_pressure.
+3. Min_pressure is negatively related to the death tolls, which is similar to the one using only min_pressure as predictor.
+4. Both the interaction effects shows that it is positively related to the death toll.
+
+Before moving on to the next model, let's take a look at the traceplot to evaluate the decentness of the model.
+```{r}
+traceplot(model.04.3, pars = c('a','bf','bdm', 'bmp', 'bfdm','bfmp','phi'))
+```
+From the traceplot above we can easily tell that the model converges.
+
+Let's compare those models. The code is shown below.
+```{r}
+rethinking::compare(model.04.1, model.04.2, model.04.3)
+```
+From the output we can tell that the one with only damage_norm as well as its interaction effect is the best model with the lowest WAIC.
+
+To better understand the model, let's make some counterfactual plots with two variables - min_pressure and damage_norm. To start off, let's do some data preprocessing. The code is shown as below.
+```{r}
+cp <- extract.samples(model.04.2)
+cp.mean <- colMeans(cp$lambda)
+cp.PI <- apply(cp$lambda, 2, PI, prob=.89)
+```
+
+Now is the code for counterfactural plots.
+```{r}
+counterfactual_plot <- function(model, mp=0, dm=0){
+  
+  cp_data=data.frame(min_pressure=rep(mp,92), damage_norm=rep(dm,92), femininity=c(1:92))
+  
+  test <- extract.samples(model)
+  test.mean <- colMeans(test$lambda)
+  test.PI <- apply(test$lambda, 2, PI, prob=.89)
+  
+  # plot the model predictions for `y` on the scale of actual deaths.
+  title <- paste0("min_pressure = ",mp," - damage_norm = ",dm)
+  plot(y = test.mean, x=cp_data$femininity, col=rangi2, ylab="deaths", xlab="femininity", pch=16, ylim=c(0,max(Hurricanes$deaths)), main=title)
+  
+  lines(y = test.mean,  x=cp_data$femininity)
+  lines( test.PI[1,],  x=cp_data$femininity, lty=2 )
+  lines( test.PI[2,],  x=cp_data$femininity, lty=2 )
+  
+  dens(test$lambda[,1], main="low pressure", xlab="deaths")
+  dens(test$lambda[,11], add=T, col="red")
+  legend("topright", legend=c("fem = 1","fem = 11"), fill = c("black","red"))
+}
+```
+
+After all the preparation, now let's do the plotting!
+```{r}
+vargrid <- expand.grid(mp= -1:2,dm = 0)
+
+par(mfrow=c(1,2))
+
+for(i in 1:NROW(vargrid)){
+  counterfactual_plot(model = model.04.2, mp = vargrid$mp[i], dm = vargrid$dm[i])
+}
+```
+
+
+< Question 4 >
+In this question we want to substitute damage_norm by log(damage_norm). First we need to form a dataframe for the model. The code is as below.
+```{r}
+Hurricanes$log_damage_norm_std <- log(Hurricanes$damage_norm)
+Hurricanes$log_damage_norm_std <- 
+  (Hurricanes$log_damage_norm_std - mean(Hurricanes$log_damage_norm_std)) / sd(Hurricanes$log_damage_norm_std)
+
+d.04.log <- list(
+  N = NROW(Hurricanes),
+  fem = Hurricanes$femininity_std,
+  d = Hurricanes$deaths,
+  log_dm = Hurricanes$log_damage_norm_std
+)
+```
+We first change dm into log_dm and then standardize it. Now it's time to formulate the model. 
+The code is as below.
+
+```{r}
+model.04.2.log.code <-"
+data{
+int N;
+int d[92];
+vector[92] log_dm;
+vector[92] fem;
+}
+parameters{
+real a;
+real bf;
+real bdm;
+real bfdm;
+real phi;
+}
+model{
+vector[92] lambda;
+phi ~ cauchy( 0 , 1 );
+bfdm ~ normal( 0 , 3 );
+a ~ normal( 0 , 3 );
+for ( i in 1:92 ) {
+lambda[i] = a + bf * fem[i] + bdm * log_dm[i] + bfdm * fem[i] * log_dm[i];
+lambda[i] = exp(lambda[i]);
+}
+d ~ neg_binomial_2( lambda , phi );
+}
+generated quantities{
+vector[92] log_lik;
+vector[92] lambda;
+for ( i in 1:92 ) {
+lambda[i] = a + bf * fem[i] + bdm * log_dm[i] + bfdm * fem[i] * log_dm[i];
+lambda[i] = exp(lambda[i]);
+}
+for ( i in 1:92 ) log_lik[i] = neg_binomial_2_lpmf( d[i] | lambda[i] , phi );
+}
+"
+```
+
+The model code is shown below.
+```{r}
+model.04.2.log <- stan(model_code = model.04.2.log.code, data = d.04.log, cores = 4, chains = 4)
+```
+
+The descriptions of the model is shown below, using print statement.
+```{r}
+print(model.04.2.log, include=FALSE, pars=c('log_lik','lambda'), probs = c(.1, .5, .9))
+```
+Rhat = 1 means that the model can reach convergence in this Markov Chain. n_eff is greater than 1800, which implys an solid model. 
+
+Compared to the model using damage_norm directly, we find out some interesting features.
+1. The relationship between log_damage_norm and death toll is greater than that of damage_norm and death toll.
+2. The interaction effects is somewhat smaller for the model using log_damage_norm.
+
+Before moving on to the next model, let's take a look at the traceplot to evaluate the decentness of the model.
+```{r}
+traceplot(model.04.2.log, pars = c('a','bf','bdm','bfdm','phi'))
+```
+From the traceplot above we can easily tell that the model converges.
+
+Let's compare those models. The code is shown below.
+```{r}
+rethinking::compare(model.04.2, model.04.2.log)
+```
+From the output we can tell that the one with log_damage_norm has a smaller WAIC comparing to the one using damage_norm directly. We can conclude that death toll doesn't increase exponentially with a linear increase in damage_norm. It is much more possible that a linear relationship is the case. However, we cannot know the true generating process. From the comparison we can only tell that the model using log_damage_norm is much likely to be the case.
+
+
+< Question 5 >
+For this question the dataset is bangladesh. The goal is to do modeling using use.contraception as the predictor. For the first model, we use use.contraception using dummy variables for district. Firstly let's import the data needed.
+```{r}
+library(rethinking)
+data("bangladesh")
+d5 <- bangladesh; rm(bangladesh)
+d5$district_id <- as.integer(as.factor(d5$district))
+```
+
+Similarly to avoid stan from crashing, let's make up a new dataset. The code is shown below.
+```{r}
+d.05 <- list(
+  uc = d5$use.contraception,
+  dist_id = d5$district_id
+)
+```
+
+The model code is shown below.
+```{r}
+model.05.code <-"
+data{
+    int uc[1934];
+int dist_id[1934];
+}
+parameters{
+vector[60] a;
+}
+model{
+vector[1934] p;
+a ~ normal( 0 , 10 );
+for ( i in 1:1934 ) {
+p[i] = a[dist_id[i]];
+p[i] = inv_logit(p[i]);
+}
+uc ~ binomial( 1 , p );
+}
+generated quantities{
+vector[1934] log_lik;
+vector[1934] p;
+for ( i in 1:1934 ) {
+p[i] = a[dist_id[i]];
+p[i] = inv_logit(p[i]);
+}
+for ( i in 1:1934 ) log_lik[i] = binomial_lpmf( uc[i] | 1 , p[i] );
+}
+"
+
+model.05 <- stan(model_code = model.05.code,
+                 data = d.05, cores = 4, chains = 4)
+```
+
+The descriptions of the model is shown below, using print statement.
+```{r}
+print(model.05, include=FALSE, pars=c('log_lik','a','p'), probs = c(.1, .5, .9))
+```
+Rhat = 1 means that the model can reach convergence in this Markov Chain. n_eff is greater than 1800, which implys an solid model. 
+
+
+Now let's construct a multilevel model. The code is shown below.
+```{r}
+model.06.code <-"
+data{
+    int uc[1934];
+int dist_id[1934];
+}
+parameters{
+vector[60] a;
+real mu;
+real<lower=0> sigma;
+}
+model{
+vector[1934] p;
+sigma ~ cauchy( 0 , 1 );
+mu ~ normal( 0 , 5 );
+for ( i in 1:1934 ) {
+p[i] = a[dist_id[i]];
+p[i] = inv_logit(p[i]);
+}
+a ~ normal( mu , sigma );
+uc ~ binomial( 1 , p );
+}
+generated quantities{
+vector[1934] log_lik;
+vector[1934] p;
+for ( i in 1:1934 ) {
+p[i] = a[dist_id[i]];
+p[i] = inv_logit(p[i]);
+}
+for ( i in 1:1934 ) log_lik[i] = binomial_lpmf( uc[i] | 1 , p[i] );
+}
+"
+
+model.06 <- stan(model_code = model.06.code, data = d.05, cores = 4, chains = 4)
+```
+
+```{r}
+print(model.06, include=FALSE, pars=c('log_lik','a','p'), probs = c(.1, .5, .9))
+```
+Rhat = 1 means that the model can reach convergence in this Markov Chain. n_eff is greater than 1000, which implys an solid model. 
+
+Now let's compare the two models using compare function.
+```{r}
+rethinking::compare(model.05, model.06)
+```
+We can easily tell that the multilevel model is better than the model using dummy variables since it has a lower WAIC value.
+
+Before ending this question, let's plot those predictions out to get a clearer overall picture. First we need to extract mean and PI value for both dummy variable model and multilevel mode. Code for data preprocessing is shown below.
+```{r}
+library(dplyr)
+d5_new <- as.tbl(d5) %>% group_by(district_id) %>% summarize(p_use_contraception=mean(use.contraception))
+
+post.dum <- extract.samples(model.05)
+post.dum.mean <- apply(inv_logit(post.dum$a), 2, mean)
+post.dum.PI <- apply(inv_logit(post.dum$a), 2, PI, prob=.89)
+
+post.mul <- extract.samples(model.06)
+post.mul.mean <- apply(inv_logit(post.mul$a), 2, mean)
+post.mul.PI <- apply(inv_logit(post.mul$a), 2, PI, prob=.89)
+```
+
+The code for creating plots for the dummy variable model is shown as below.
+```{r}
+plot(y=d5_new$p_use_contraception, x=d5_new$district_id, pch=19, xlab="districts", ylab="proportion using contraception")
+abline(h=median(d5_new$p_use_contraception))
+legend("topright",legend=c("data","fixed effects", "multilevel"),fill=c("black","red","blue"))
+
+points(y=post.dum.mean,x=1:60, col="red")
+for(i in 1:60){segments(x0=i,x1=i,y0=post.dum.PI[1,i],y1=post.dum.PI[2,i],col="red")}
+
+points(y=post.mul.mean,x=(1:60)+0.2, col="blue")
+for(i in 1:60){segments(x0=i+0.2,x1=i+0.2,y0=post.mul.PI[1,i],y1=post.mul.PI[2,i],col="blue")}
+```
+
+From the plot we can see that multilevel model is a better one since the extreme value are all brought back to the median. The distance between median also shrinks.

@@ -1,0 +1,279 @@
+---
+title: "HomeWork4"
+author: "Yung-Tang Chou"
+date: "2019å¹?5???1?—¥"
+output: word_document
+---
+Here is the rmarkdown file for the Multivariate Analysis Homework3.
+
+Before we start let's import some libraries and do data transformation.
+```{r , results='hide'}
+library(rstan)
+library(rethinking)
+data('rugged')
+d <- rugged
+d$log_gdp <- log(d$rgdppc_2000)
+d <- d[complete.cases(d$rgdppc_2000),]
+d$log_gdp_std <- d$log_gdp / mean(d$log_gdp)
+d$rugged_std <- d$rugged / max(d$rugged)
+d2 <- d[(d$country != 'Seychelles'), ] 
+```
+------------------------------------
+For Question 1
+
+Problem A
+
+Firstly we build two models for full data and full data without Seychelles.
+```{r}
+model.01 <- quap(alist(
+  log_gdp_std ~ dnorm(mu, sigma),
+  mu <- a + br * rugged_std + bc * cont_africa + brc*rugged_std*cont_africa,
+  a ~ dnorm(1, 0.3),
+  br ~ dnorm(0, 0.3),
+  bc ~ dnorm(0.5,0.25),
+  brc ~ dnorm(0.5, 0.25),
+  sigma ~ dexp(1)
+), data = d)
+
+
+model.02 <- quap(alist(
+  log_gdp_std ~ dnorm(mu, sigma),
+  mu <- a + br * rugged_std + bc * cont_africa + brc*rugged_std*cont_africa,
+  a ~ dnorm(1, 0.3),
+  br ~ dnorm(0, 0.3),
+  bc ~ dnorm(0.5,0.25),
+  brc ~ dnorm(0.5, 0.25),
+  sigma ~ dexp(1)
+), data = d2)
+```
+
+Before moving on, let's peak into the parameter estimate information using precis function.
+For model.01, the parameter estimate is as follows.
+```{r,echo = FALSE}
+precis(model.01)
+```
+
+For model.02, the parameter estimate is as follows.
+```{r,echo = FALSE}
+precis(model.02)
+```
+
+
+Given the mean and slope of all the parameters shown above, there are not too much difference between model.01, which uses all data, and model.02, which uses all data except Syechelles.
+
+
+Problem B
+
+Before doing the plotting let's first prepare items needed.
+```{r, results='hide'}
+par(mfrow=c(2,2))
+d.A1 <- d[d$cont_africa == 1,]
+d.A0 <- d[d$cont_africa == 0,]
+d2.A1 <- d2[d2$cont_africa == 1,] 
+d2.A0 <- d2[d2$cont_africa ==0, ] 
+rugged_seq <- seq(from=-0.1, to = 1.1, length.out = 30)
+```
+
+With all the prepatation, let's first plot all African countries.
+```{r, echo=FALSE}
+plot(d.A1$rugged_std, d.A1$log_gdp_std, pch=16, col=rangi2, 
+     xlab = 'ruggedness (standardized)', ylab = 'log GDP (as proportion of mean)', 
+     xlim = c(0,1))
+mu <- link(model.01, data =data.frame(cont_africa = 1, rugged_std = rugged_seq))
+mu_mean <- apply(mu, 2, mean)
+mu_ci <- apply(mu, 2, PI, prob=.97)
+lines(rugged_seq, mu_mean, lwd=2)
+shade(mu_ci, rugged_seq, col=col.alpha(rangi2, .3))
+mtext("African nations")
+```
+
+Then let's plot non-african countries.
+```{r, echo=FALSE}
+plot(d.A0$rugged_std, d.A0$log_gdp_std, pch=1, col='black',
+     xlab = 'ruggedness (standardized)', ylab= 'log GDP (as proportion of mean)',
+     xlim = c(0,1))
+mu <- link(model.01, data=data.frame(cont_africa = 0, rugged_std = rugged_seq))
+mu_mean <- apply(mu,2,mean)
+mu_ci <- apply(mu,2, PI, prob=.97)
+lines(rugged_seq, mu_mean, lwd=2)
+shade(mu_ci, rugged_seq)
+mtext("Non-African nations")
+```
+
+Similarly, let's work on all African countries without Seychelles and all non-African countries without Seychelles.
+```{r, echo=FALSE}
+
+plot(d2.A1$rugged_std, d2.A1$log_gdp_std, pch=16, col=rangi2, 
+     xlab = 'ruggedness (standardized)', ylab = 'log GDP (as proportion of mean)', 
+     xlim = c(0,1))
+mu <- link(model.02, data =data.frame(cont_africa =1, rugged_std = rugged_seq))
+mu_mean <- apply(mu, 2, mean)
+mu_ci <- apply(mu, 2, PI, prob=.97)
+lines(rugged_seq, mu_mean, lwd=2)
+shade(mu_ci, rugged_seq, col=col.alpha(rangi2, .3))
+mtext("African nations but Seychelles")
+
+
+plot(d2.A0$rugged_std, d2.A0$log_gdp_std, pch=1, col='black', 
+     xlab = 'ruggedness (standardized)', ylab = 'log GDP (as proportion of mean)', 
+     xlim = c(0,1))
+mu <- link(model.02, data =data.frame(cont_africa = 0, rugged_std = rugged_seq))
+mu_mean <- apply(mu, 2, mean)
+mu_ci <- apply(mu, 2, PI, prob=.97)
+lines(rugged_seq, mu_mean, lwd=2)
+shade(mu_ci, rugged_seq)
+mtext("Non-African nations but Seychelles")
+```
+
+From the plot we can get some simple facts.
+Firstly, for African nations, the extent of logarithmic ruggedness is positively related to the magnitude of GDP, which in turn implys that ruggedness is positively related to GDP.
+FOr non-African nations, the extent of logarithmic ruggedness is negatively related to the magnitude of GDP, which in turn implys that ruggedness is negatively related to GDP.
+
+Problem C
+
+Firstly build the three models for model comparison analysis.
+```{r}
+model.03 <- quap(alist(
+  log_gdp_std ~ dnorm(mu, sigma),
+  mu <- a + br * rugged_std,
+  a ~ dnorm(1, 0.3),
+  br ~ dnorm(0, 0.3),
+  sigma ~ dexp(1)
+), data = d2)
+
+model.04 <- quap(alist(
+  log_gdp_std ~ dnorm(mu, sigma),
+  mu <- a + br * rugged_std + bc * cont_africa,
+  a ~ dnorm(1, 0.3),
+  br ~ dnorm(0, 0.3),
+  bc ~ dnorm(0.5,0.25),
+  sigma ~ dexp(1)
+), data = d2)
+
+model.05 <- quap(alist(
+  log_gdp_std ~ dnorm(mu, sigma),
+  mu <- a + br * rugged_std + bc * cont_africa + brc*rugged_std*cont_africa,
+  a ~ dnorm(1, 0.3),
+  br ~ dnorm(0, 0.3),
+  bc ~ dnorm(0.5,0.25),
+  brc ~ dnorm(0.5, 0.25),
+  sigma ~ dexp(1)
+), data = d2)
+```
+
+Using WAIC to conduct model comparison analysis. This can be done with "Compare" under the rethinking package.
+```{r}
+compare(model.03, model.04, model.05)
+```
+
+Given the results shown above, we can tell that model.05, which incorporates two vairables as well as the interaction, is the best prediction model in that it has the lowest WAIC value. 
+
+We can get the model-averaged predictions of these models using the "Ensemble" function.
+```{r}
+rugged.seq <- seq(from = 0, to = 8, length.out = 30)
+rugged.seq.std <- rugged.seq - mean(rugged.seq)
+data = data.frame(rugged_std = rugged.seq.std, cont_africa = 1)
+model.ensemble <- ensemble(model.03, model.04, model.05, data = data)
+```
+
+To better understand the predictions, let's simply plot it out.
+```{r, echo=FALSE}
+par(mfrow=c(1,1))
+mu_mean <- apply(X = model.ensemble$link, 2, mean)
+mu_PI <- apply(X = model.ensemble$link, 2, PI, prob=.97)
+data.plot <- d[(d$cont_africa == 1),]
+plot(log_gdp_std ~ rugged_std, data=data.plot, pch=16, col=rangi2)
+
+lines(rugged.seq.std, mu_mean )
+lines(rugged.seq.std, mu_PI[1,], lty=2 )
+lines(rugged.seq.std, mu_PI[2,], lty=2 )
+```
+
+This plot is drawn based on the facts below.
+1. The dataset includes all African and non-African nations excep Seychelles.
+2. This is the model-averaged prediction of model.03, model.04, model.05.
+
+The result shows positive relationship between the two variables, ruggedness and GDP. This is the combination of both African and non-African countries. Comparing with the plots from problem B, we can find out that if we do not consider the difference in countries, we will have wrong inplications for non-African countries.
+
+
+--------------------------------------------
+For Question 2
+
+Before entering each problem, first let's import data and libraries needed.
+```{r, results='hide'}
+library(rstan)
+library(rethinking)
+data('nettle')
+d <- nettle
+str(d)
+
+d$lang.per.cap <- d$num.lang / d$k.pop
+d$log.lang.per.cap <- log(d$lang.per.cap)
+d$log.area <- log(d$area)
+d$mean.growing.season
+```
+
+
+Problem A
+
+The first hypothesis is that language diversity is positively associated wit hthe average length of the growing season. The model is shown below.
+```{r}
+model.06 <- quap(alist(
+  log.lang.per.cap ~ dnorm(mu, sigma),
+  mu <- a + bm * d$mean.growing.season + ba * d$log.area,
+  a ~ dnorm(0,30),
+  bm ~ dnorm(0,30),
+  ba ~ dnorm(0,30),
+  sigma ~ dexp(10)
+), data = d)
+```
+
+```{r}
+precis(model.06)
+```
+
+The result above shows that mean growing season is positively associated with language diversity, with slope = 0.14.
+
+
+Problem B
+
+
+```{r}
+model.07 <- quap(alist(
+  log.lang.per.cap ~ dnorm(mu, sigma),
+  mu <- a + bs * sd.growing.season + ba * log.area,
+  a ~ dnorm(0,30),
+  bs ~ dnorm(0,30),
+  ba ~ dnorm(0,30),
+  sigma ~ dexp(10)
+), data = d)
+```
+
+```{r}
+precis(model.07)
+```
+
+The result above shows that the standard deviation growing season is negatively associated with language diversity, with slope = -0.21.
+
+
+Problem C
+
+```{r}
+model.08 <- quap(alist(
+  log.lang.per.cap ~ dnorm(mu, sigma),
+  mu <- a + bm * mean.growing.season + bs * sd.growing.season + bms * mean.growing.season * sd.growing.season,
+  a ~ dnorm(0,30),
+  bm ~ dnorm(0,30),
+  bs ~ dnorm(0,30),
+  bms ~ dnorm(0,30),
+  sigma ~ dexp(10)
+), data = d)
+```
+
+```{r}
+precis(model.08)
+```
+
+The result above shows that with interaction, given mean growing season, standard deviation of the growing season will be positively associated with language diversity. Likewise, given standard deviation of the growing season, mean growing season will be positively associated with language diversity. This is the counterfactual result.
+
+When considering the interaction effect of mean growing season as well as the standard deviation, the relationship is negatively associated. Intuitively, the higher the combination of mean growing seanson and standard deviation of growing season, social integration is more important than trading with other nations. Thus, language diversity should decrease.

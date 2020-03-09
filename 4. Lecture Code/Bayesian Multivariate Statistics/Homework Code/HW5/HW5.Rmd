@@ -1,0 +1,279 @@
+---
+title: "Assignment5"
+author: "Yung-Tang Chou"
+date: "2019/5/16"
+output: word_document
+---
+Here is the rmarkdown file for the Multivariate Analysis Assignment 5.
+
+< Question A >
+
+The data is about salmon pirating attempts by Bald Eagles.
+Before we start let's import some libraries needed. 
+```{r , results='hide'}
+library(rstan)
+library(rethinking)
+library(MASS)
+library(loo)
+library(dplyr) 
+library(tidyr)
+library(skimr) 
+```
+
+
+The dataset itself contains categorical values in columns V, P, and A. Before building the model, let's transform them into dummy variables.
+```{r}
+data("eagles")
+d <- eagles; rm(eagles)
+d$V <- as.integer(ifelse(d$V == 'L', 1, 0))
+d$P <- as.integer(ifelse(d$P == 'L', 1, 0))
+d$A <- as.integer(ifelse(d$A == 'A', 1, 0))
+```
+
+A basic summary statistics is shown below.
+```{r, echo = FALSE}
+skim(d)
+```
+
+Let's start by building the stan model. In this model we want to predict the relationship between successful pirating attemps and its body size, the victim's body size, and adulthood. Since the success rate is between zero and one, we form a logistic model to compress the output ranging from zero to one.
+
+The model is shown below.
+```{r}
+model.01.code <- "
+data{
+    int n[8];
+int y[8];
+int V[8];
+int A[8];
+int P[8];
+}
+parameters{
+real a;
+real bP;
+real bA;
+real bV;
+}
+model{
+vector[8] p;
+bV ~ normal( 0 , 5 );
+bA ~ normal( 0 , 5 );
+bP ~ normal( 0 , 5 );
+a ~ normal( 0 , 10 );
+for ( i in 1:8 ) {
+p[i] = a + bP * P[i] + bA * A[i] + bV * V[i];
+p[i] = inv_logit(p[i]);
+}
+y ~ binomial( n , p );
+}
+generated quantities{
+vector[8] log_lik;
+vector[8] p;
+for ( i in 1:8 ) {
+p[i] = a + bP * P[i] + bA * A[i] + bV * V[i];
+p[i] = inv_logit(p[i]);
+}
+for ( i in 1:8 ) log_lik[i] = binomial_lpmf( y[i] | n[i] , p[i] );
+}"
+```
+
+Note that within the generated quantities block, the log_lik is also calculated.
+
+
+Now we are going to run the stan model. Before doing so, to prevent stan model from crashing, we form a specific dataset for the stan model.
+```{r}
+dat <- list(
+  N = NROW(d),
+  y = d$y,
+  n = d$n,
+  P = d$P,
+  A = d$A,
+  V = d$V)
+```
+
+For the stan model, we will use "dat" generated above as the input data, and use four markov chains to do the modeling.
+The model code is shown below.
+```{r}
+model.01 <- stan(model_code = model.01.code, data = dat, chains = 4)
+```
+
+The descriptions of the model is shown below, using print statement.
+```{r}
+print(model.01, include = F,  pars = "log_lik", probs = c(.1, .5, .9))
+```
+
+In order to identify whether the stan model is decent, we use traceplot to see if all the params lie in a specific range. The code is as below.
+```{r}
+traceplot(model.01, pars = c('a','bP','bA','bV'))
+```
+
+Besides, let's see the distribution of the model params using pairplot. The code is as below.
+```{r}
+pairs(model.01, pars = c('a','bP','bA','bV'))
+```
+
+From the plots above, we can tell the following things.
+1. The stan model converges properly. The traceplot shows that all the values lie in a specific range, which is the desired outcome.
+2. The pairplot shows that the distribution of param bP is right-skewed, while the distribution of param bV is left-skewed.
+
+
+Now let's do a comparison with quadratic approximation, using quap function in the rethinking package.
+The code for the quadratic model is shown below.
+
+```{r}
+model.01.quap <- quap(
+  alist(
+    y ~ dbinom(n, p),
+    logit(p) <- a + bP * P + bA * A + bV * V,
+    a ~ dnorm(0, 2),
+    bP ~ dnorm(0, 1),
+    bA ~ dnorm(0, 1),
+    bV ~ dnorm(0, 1)
+  ),
+  data = d
+)
+```
+
+```{r}
+precis(model.01.quap)
+```
+
+
+The pairplot of the quadratic model is shown below.
+```{r}
+pairs(model.01.quap)
+```
+
+Comparing the two model, we can find out something interesting.
+1. Amost all the means of the parameters in the quadratic model is larger, as is the standard deviation.
+2. From the pairplot for quadratic approximation we can see that almost all the distribution is normal distributed, which is really different from what we've seen in the stan model.
+
+We can tell from the stan model that the distribution may not be Gaussian. If we use quadratic approximation to fit the data, we don't allow tong-tail distribution, which might in turn produces misleading distribution. In a nutshell, using stan model is a better idea since it allows distribution to skew, granting more flexibility rather than inposing a Gaussian distribution to a somehow perhaps not-Gaussian distributed dataset.
+
+< Question B >
+
+Now we are going to interpret the predictions. First we will see the predicted probability of the sucess rate and its 89% interval; then we will look at the predicted success count.
+
+For success rate, we can directly grab the dataframe from the stan model. Then, calculate the mean and PI with apply functions. The code is shown below.
+
+```{r}
+prob <- as.data.frame(model.01)[,13:20]
+prob.mean <- apply(prob, 2, mean)
+prob.PI <- apply(prob, 2, PI, prob=.89)
+```
+
+Let's plot out to see the predictions.
+```{r}
+d$success.proportion <- d$y / d$n
+plot(d$success.proportion, col=rangi2, xaxt = 'n', ylab='successful proportion', xlab='case',
+     xlim=c(0.75,8.25), ylim=c(0,1), pch=16)
+axis(1, at=1:8, labels = c('LAL','LAS','LIL','LIS','SAL','SAS','SIL','SIS'))
+points(1:8, prob.mean)
+for (i in 1:8) lines(c(i,i), prob.PI[,i])
+mtext('Successful Rate in each case, Prediction vs Observation')
+```
+
+The blue dots in the plot show the succesful rate calculated directly from the data. The hollow dots demonstrate the predicted mean of the successful rate. The line is where the percentile intervals are landed.
+
+From the plot we can see almost all the cases follow our prediction, excep for case "SIS". We can draw some conclusions:
+1. Body size plays an important role in this prediction. If the size of the pirating bird is larger than that of the victim, the success rate is approximately 100%. If the size pirating bird is smaller than that of the victim, the success rate will drop tremendously.
+2. The sample for the case "body size of both pirating bird and victim bird are small, in the meantime being immature" is small, therefore hard to predict. This might be the reason why the real data differs from the predicted data.
+
+
+
+
+Then let's move on to predict the successful attempts. We first calculate the successful attempts using the predictions generated from stan model along with the attempts in the original dataset. The code is as below.
+```{r}
+prob <- as.data.frame(model.01)[,13:20]
+suc <- as.data.frame(round(prob[,1] * d$n[1]))
+for (i in 2:8) {
+  suc <- cbind(suc, round(prob[,i] * d$n[i]))
+}
+suc.mean <- apply(suc, 2, mean)
+suc.PI <- apply(suc, 2, PI, prob=.89)
+```
+
+Let's plot out to see the predictions.
+```{r}
+plot(d$y, col=rangi2, xaxt="n", ylab="number of successes", xlab="case", 
+     xlim=c(0.75,8.25) , ylim = c(0, 30), pch=16)
+axis(1, at=1:8, labels=c( "LAL","LAS","LIL","LIS","SAL","SAS","SIL","SIS" ))
+points( 1:8 , suc.mean)
+for ( i in 1:8 ) lines( c(i, i), suc.PI[,i])
+mtext('Number of successes, Prediction vs Observation')
+```
+
+The prediction and the observation is similar to each other. It proves that the model is decent.
+
+
+
+< Question C >
+Lastly, let's consider the interaction between body size and age. Again we build the stan model first, but this time intercations are considered. The code is shown below.
+```{r}
+model.02.code <- 'data{
+    int n[8];
+int y[8];
+int V[8];
+int A[8];
+int P[8];
+}
+parameters{
+real a;
+real bP;
+real bA;
+real bV;
+real bPA;
+}
+model{
+vector[8] p;
+bPA ~ normal( 0 , 2 );
+bV ~ normal( 0 , 2 );
+bA ~ normal( 0 , 2 );
+bP ~ normal( 0 , 2 );
+a ~ normal( 0 , 5 );
+for ( i in 1:8 ) {
+p[i] = a + bP * P[i] + bA * A[i] + bV * V[i] + bPA * P[i] * A[i];
+p[i] = inv_logit(p[i]);
+}
+y ~ binomial( n , p );
+}
+generated quantities{
+vector[8] log_lik;
+vector[8] p;
+for ( i in 1:8 ) {
+p[i] = a + bP * P[i] + bA * A[i] + bV * V[i] + bPA * P[i] * A[i];
+p[i] = inv_logit(p[i]);
+}
+for ( i in 1:8 ) log_lik[i] = binomial_lpmf( y[i] | n[i] , p[i] );
+}'
+```
+
+Similar to what we have done with the first stan model, we set a new dataframe to prevent errors occured when modeling from stan model.
+```{r}
+dat <- list(
+  N = NROW(d),
+  V = d$V,
+  P = d$P,
+  A = d$A,
+  y = d$y,
+  n = d$n)
+```
+
+```{r}
+model.02 <- stan(model_code = model.02.code, data = dat, chains = 4)
+print(model.02, include = F, pars = "log_lik", probs = c(.1, .5, .9))
+```
+
+Let's compare the two stan model using waic. The first stan model doesn't consider interactions, while the second one does. We first extract log_lik and then evaluate by loo and waic. The code is shown below.
+```{r}
+log_lik_01 <- extract_log_lik(model.01, merge_chains = FALSE)
+r_eff <- relative_eff(exp(log_lik_01))
+loo_01 <- loo(log_lik_01, r_eff = r_eff, cores = 2)
+waic_01 <- waic(log_lik_01)
+log_lik_02 <- extract_log_lik(model.02, merge_chains = FALSE)
+r_eff <- relative_eff(exp(log_lik_02))
+loo_02 <- loo(log_lik_02, r_eff = r_eff, cores = 2)
+waic_02 <- waic(log_lik_02)
+loo::compare(waic_01, waic_02)
+```
+
+Since the elpd_diff is positive, we can conclude that the second model, which considers interactions, is better than the first model.
