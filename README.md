@@ -8,7 +8,7 @@ The goal of this repository is to summarize and organize my knowledge for machin
 ## Featured Projects
 General Framework: [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/Projects/Project%20Templates.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Projects/Project%20Templates.ipynb)
 
-* 2020-02-24 **Yelp Review Analysis: Sentiment Analysis & Topic Modeling** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/Projects/YelpReviewAnalysis/Yelp%20Review%20Analysis%20--%20Sentiment%20Analysis%20%26%20Topic%20Modeling.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Projects/YelpReviewAnalysis/Yelp%20Review%20Analysis%20--%20Sentiment%20Analysis%20%26%20Topic%20Modeling.ipynb)
+* 2020-02-24: **Yelp Review Analysis: Sentiment Analysis & Topic Modeling** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/Projects/YelpReviewAnalysis/Yelp%20Review%20Analysis%20--%20Sentiment%20Analysis%20%26%20Topic%20Modeling.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Projects/YelpReviewAnalysis/Yelp%20Review%20Analysis%20--%20Sentiment%20Analysis%20%26%20Topic%20Modeling.ipynb)
     * Sentiment Analysis (Textblob, VADER, Afinn)| Topic Modeling | Natural Language Processing 
 
 
@@ -16,17 +16,17 @@ General Framework: [[Notebook]](https://github.com/patrick-ytchou/Data-Science/b
 ## Data Science Learning Notes
 
 **Regression Analysis**
-* 2020-02-11 **`Regression Analysis: Assumptions for Linear Regression`** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/Algorithms/Regression/Regression%20Analysis%20--%20Assumptions%20for%20Linear%20Regression.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Algorithms/Regression/Regression%20Analysis%20--%20Assumptions%20for%20Linear%20Regression.ipynb)
+* 2020-02-11: **Regression Analysis: Assumptions for Linear Regression** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/Algorithms/Regression/Regression%20Analysis%20--%20Assumptions%20for%20Linear%20Regression.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Algorithms/Regression/Regression%20Analysis%20--%20Assumptions%20for%20Linear%20Regression.ipynb)
     * Multicollinearity | Heteroscedasticity | Auto-Correlation
     * ResidualsPlot | White Test | Q-Q Plot | Durbin-Watson
     
-* 2020-02-11 **`Regression Analysis: Regression with Regularization`** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/Algorithms/Regression/Regression%20Analysis%20--%20Regression%20with%20Regularization.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Algorithms/Regression/Regression%20Analysis%20--%20Regression%20with%20Regularization.ipynb)
+* 2020-02-11: **Regression Analysis: Regression with Regularization** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/Algorithms/Regression/Regression%20Analysis%20--%20Regression%20with%20Regularization.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Algorithms/Regression/Regression%20Analysis%20--%20Regression%20with%20Regularization.ipynb)
     * Naive Linear Regression | Regularization | Lasso/Ridege Regression
     
-* 2020-02-11 **`Regression Analysis: Parametric/Nonparametric regression`** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/Algorithms/Regression/Regression%20Analysis%20--%20Parametric%20and%20Nonparametric%20Regression.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Algorithms/Regression/Regression%20Analysis%20--%20Parametric%20and%20Nonparametric%20Regression.ipynb)
+* 2020-02-11: **Regression Analysis: Parametric/Nonparametric regression** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/Algorithms/Regression/Regression%20Analysis%20--%20Parametric%20and%20Nonparametric%20Regression.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Algorithms/Regression/Regression%20Analysis%20--%20Parametric%20and%20Nonparametric%20Regression.ipynb)
     * Polynomial Regression | Random Forest Regression | dtreeviz
     
-* 2020-02-16 **`Loss Functions for Regression Analysis`** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/Algorithms/Regression/Regression%20Analysis%20--%20Loss%20Functions%20for%20Regression%20Analysis.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Algorithms/Regression/Regression%20Analysis%20--%20Loss%20Functions%20for%20Regression%20Analysis.ipynb)
+* 2020-02-16: **Loss Functions for Regression Analysis** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/Algorithms/Regression/Regression%20Analysis%20--%20Loss%20Functions%20for%20Regression%20Analysis.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Algorithms/Regression/Regression%20Analysis%20--%20Loss%20Functions%20for%20Regression%20Analysis.ipynb)
     * MSE | MAE | RMSE | MBE | MAPE | RMSLE | R² | Adjusted R²
 
 
@@ -40,15 +40,15 @@ General Framework: [[Notebook]](https://github.com/patrick-ytchou/Data-Science/b
 
 
 **Neural Network**
-* 2020-03-03 **`Tips for Neural Network Training`** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/Algorithms/NeuralNetwork/Tips%20for%20Neural%20Network%20Training.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Algorithms/NeuralNetwork/Tips%20for%20Neural%20Network%20Training.ipynb)
+* 2020-03-03: **Tips for Neural Network Training** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/Algorithms/NeuralNetwork/Tips%20for%20Neural%20Network%20Training.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Algorithms/NeuralNetwork/Tips%20for%20Neural%20Network%20Training.ipynb)
 	* Activation Function | Optimizer | EarlyStopping | Regularization | Dropout
 
 **Optimization Techniques**
 
-* 2020-02-15 **`Genetic Algorithm from scratch: Traveling Salesman Problem`** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/Algorithms/Optimization/Genetic%20Algorithm%20from%20Scratch%20--%20Traveling%20Salesman%20Problem.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Algorithms/Optimization/Genetic%20Algorithm%20from%20Scratch%20--%20Traveling%20Salesman%20Problem.ipynb)
+* 2020-02-15: **Genetic Algorithm from scratch: Traveling Salesman Problem** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/Algorithms/Optimization/Genetic%20Algorithm%20from%20Scratch%20--%20Traveling%20Salesman%20Problem.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Algorithms/Optimization/Genetic%20Algorithm%20from%20Scratch%20--%20Traveling%20Salesman%20Problem.ipynb)
     * Genetic Algorithm | Traveling Salesman Problem 
 
-* 2020-03-07 **`Gradient Descent from scratch`** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/Algorithms/Optimization/Gradient%20Descent%20from%20Scratch.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Algorithms/Optimization/Gradient%20Descent%20from%20Scratch.ipynb)
+* 2020-03-07: **Gradient Descent from scratch** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/Algorithms/Optimization/Gradient%20Descent%20from%20Scratch.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Algorithms/Optimization/Gradient%20Descent%20from%20Scratch.ipynb)
 	* Vanilla Gradient Descent | Adagrad | Stochastic Gradient Descent
 
 **Model Selection & Explainability**
@@ -62,7 +62,7 @@ General Framework: [[Notebook]](https://github.com/patrick-ytchou/Data-Science/b
 
 **Speical Topics**
 
-* 2020-02-24 **`Market Basket Analysis: Association Rule Mining`** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/Special-Topics/AssociationRules/Market%20Basket%20Analysis%20--%20Association%20Rule%20Explained.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Special-Topics/AssociationRules/Market%20Basket%20Analysis%20--%20Association%20Rule%20Explained.ipynb)
+* 2020-02-24: **Market Basket Analysis: Association Rule Mining** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/Special-Topics/AssociationRules/Market%20Basket%20Analysis%20--%20Association%20Rule%20Explained.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Special-Topics/AssociationRules/Market%20Basket%20Analysis%20--%20Association%20Rule%20Explained.ipynb)
     * Market Basket Analysis | Apriori Algorithm
 
 ---
