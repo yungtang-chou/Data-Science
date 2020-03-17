@@ -39,6 +39,10 @@ General Framework: [[Notebook]](https://github.com/patrick-ytchou/Data-Science/b
 * 2020-03-03: **Tips for Neural Network Training** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/Algorithms/NeuralNetwork/Tips%20for%20Neural%20Network%20Training.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Algorithms/NeuralNetwork/Tips%20for%20Neural%20Network%20Training.ipynb)
 	* Activation Function | Optimizer | EarlyStopping | Regularization | Dropout
 
+* 2020-03-17: **Convolutional Neural Network (CNN) with MNIST** [[Notebook]]() | [[nbviewer]]()
+	* Convolution | Max Pooling | Flatten
+
+
 **Optimization Techniques**
 
 * 2020-02-15: **Genetic Algorithm from scratch: Traveling Salesman Problem** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/Algorithms/Optimization/Genetic%20Algorithm%20from%20Scratch%20--%20Traveling%20Salesman%20Problem.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Algorithms/Optimization/Genetic%20Algorithm%20from%20Scratch%20--%20Traveling%20Salesman%20Problem.ipynb)
