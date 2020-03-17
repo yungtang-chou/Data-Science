@@ -39,7 +39,7 @@ General Framework: [[Notebook]](https://github.com/patrick-ytchou/Data-Science/b
 * 2020-03-03: **Tips for Neural Network Training** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/Algorithms/NeuralNetwork/Tips%20for%20Neural%20Network%20Training.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Algorithms/NeuralNetwork/Tips%20for%20Neural%20Network%20Training.ipynb)
 	* Activation Function | Optimizer | EarlyStopping | Regularization | Dropout
 
-* 2020-03-17: **Convolutional Neural Network (CNN) with MNIST** [[Notebook]]() | [[nbviewer]]()
+* 2020-03-17: **Convolutional Neural Network (CNN) with MNIST** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/2.%20Algorithms/NeuralNetwork/Neural%20Network%20-%20Convolutional%20Neural%20Network%20(CNN)%20with%20MNIST.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/2.%20Algorithms/NeuralNetwork/Neural%20Network%20-%20Convolutional%20Neural%20Network%20%28CNN%29%20with%20MNIST.ipynb)
 	* Convolution | Max Pooling | Flatten
 
 
