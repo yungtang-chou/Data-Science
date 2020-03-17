@@ -63,6 +63,11 @@ General Framework: [[Notebook]](https://github.com/patrick-ytchou/Data-Science/b
 
 **Feature Selection & Engineering**
 
+
+
+**Visualization Technique**
+
+
 ---
 ## Pending Topics
 
@@ -80,6 +85,13 @@ General Framework: [[Notebook]](https://github.com/patrick-ytchou/Data-Science/b
 ## Data Science Resources 
 
 Below is some wonderful data science resources collected online.
+
+
+### Professional Skills:
+
+[How To Speak With Confidence To Absolutely Anyone](https://medium.com/@georgejziogas/how-to-speak-with-confidence-to-absolutely-anyone-17aff65c37ef)
+
+
 
 
 ### Comprehensive Resource:
