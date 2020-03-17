@@ -30,12 +30,8 @@ General Framework: [[Notebook]](https://github.com/patrick-ytchou/Data-Science/b
     * MSE | MAE | RMSE | MBE | MAPE | RMSLE | R² | Adjusted R²
 
 
+**Classification & Clustering Analysis**
 
-**Classification Analysis**
-
-
-
-**Clustering Analysis**
 
 
 
@@ -51,19 +47,21 @@ General Framework: [[Notebook]](https://github.com/patrick-ytchou/Data-Science/b
 * 2020-03-07: **Gradient Descent from scratch** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/Algorithms/Optimization/Gradient%20Descent%20from%20Scratch.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Algorithms/Optimization/Gradient%20Descent%20from%20Scratch.ipynb)
 	* Vanilla Gradient Descent | Adagrad | Stochastic Gradient Descent
 
-**Model Selection & Explainability**
+**Model Explainability**
 
 
+**Statistical Inference**
 
-
-**Feature Engineering Technique**
-
-
+* 2020-03-17: **A/B Testing: Determine Sample Size** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/5.%20Statistical%20Inference/AB%20Testing/AB-Testing%20-%20Determine%20Sample%20Size.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/5.%20Statistical%20Inference/AB%20Testing/AB-Testing%20-%20Determine%20Sample%20Size.ipynb)
+	* A/B Testing | Effect Size | Cohen's d
 
 **Speical Topics**
 
 * 2020-02-24: **Market Basket Analysis: Association Rule Mining** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/Special-Topics/AssociationRules/Market%20Basket%20Analysis%20--%20Association%20Rule%20Explained.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Special-Topics/AssociationRules/Market%20Basket%20Analysis%20--%20Association%20Rule%20Explained.ipynb)
     * Market Basket Analysis | Apriori Algorithm
+
+
+**Feature Selection & Engineering**
 
 ---
 ## Pending Topics
