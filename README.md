@@ -53,6 +53,8 @@ General Framework: [[Notebook]](https://github.com/patrick-ytchou/Data-Science/b
 
 **Model Explainability**
 
+* 2020-04-04: **Model Explanation with Santander Dataset** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/3.%20Special%20Topics/ModelExplanation/Model%20Explanation%20with%20Santander%20Dataset.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/3.%20Special%20Topics/ModelExplanation/Model%20Explanation%20with%20Santander%20Dataset.ipynb)
+	* Tree Visualization | Permutation Feature Importance | Partial Dependence Plot | SHAP Values
 
 **Statistical Inference**
 
