@@ -32,7 +32,8 @@ General Framework: [[Notebook]](https://github.com/patrick-ytchou/Data-Science/b
 
 **Classification & Clustering Analysis**
 
-
+* 2020-04-05: **Decision Tree Classifier From Scratch** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/2.%20Algorithms/DecisionTree/Decision%20Tree%20Classifier%20from%20Scratch.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/2.%20Algorithms/DecisionTree/Decision%20Tree%20Classifier%20from%20Scratch.ipynb)
+    * Gini Impurity | Parent/Child Nodes | Decision Tree | Tree Visualization
 
 
 **Neural Network**
@@ -83,9 +84,9 @@ General Framework: [[Notebook]](https://github.com/patrick-ytchou/Data-Science/b
 
 * `Recommender System`
 
-* `Tree Algorithm`
-
 * `Support Vector Machines`
+
+* `Entity Embedding`
 
 ---
 ## Data Science Resources 
