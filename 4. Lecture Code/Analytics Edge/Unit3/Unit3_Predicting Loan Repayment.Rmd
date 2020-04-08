@@ -1,0 +1,156 @@
+---
+title: "Unit3_Predicting Loan Repayment"
+output: pdf_document
+---
+
+Problem 1.1 - Preparing the Dataset
+```{r}
+loan = read.csv("loans.csv")
+table(loan$not.fully.paid)
+```
+
+Problem 1.2 - Preparing the Dataset
+```{r}
+summary(loan)
+```
+
+Problem 1.3 - Preparing the Dataset
+```{r}
+missing = subset(loan, is.na(log.annual.inc) | is.na(days.with.cr.line) | is.na(revol.util) | is.na(inq.last.6mths) | is.na(delinq.2yrs) | is.na(pub.rec))
+nrow(missing)
+table(missing$not.fully.paid)
+```
+
+Problem 1.4 - Preparing the Dataset
+```{r}
+library(mice)
+set.seed(144)
+vars.for.imputation = setdiff(names(loan), "not.fully.paid")
+imputed = complete(mice(loan[vars.for.imputation]))
+loan[vars.for.imputation] = imputed
+```
+
+Problem 2.1 - Prediction Models
+```{r}
+loans = read.csv("loans_imputed.csv")
+set.seed(144)
+split = sample.split(loans$not.fully.paid, SplitRatio = 0.7)
+train = subset(loans, split == T)
+test = subset(loans, split == F)
+
+model = glm(not.fully.paid ~ ., data = train, family = binomial)
+summary(model)
+```
+
+Problem 2.2 - Prediction Models
+```{r}
+# Logit(A) - Logit(B) = -9.317e-03 * 700 - (-9.317e-03) * 710 = 0.09317
+# oddA / oddB = exp(oddA - oddB) = 1.097648
+```
+
+Problem 2.3 - Prediction Models
+```{r}
+predicted.risk = predict(model, type = "response", newdata = test)
+test$predicted.risk = predicted.risk
+table(test$not.fully.paid, test$predicted.risk > 0.5)
+# Accuracy = (2400+3) / (2400+3+13+457) = 0.8364
+
+# Baseline model
+table(train$not.fully.paid) # predict all 0.
+table(test$not.fully.paid)
+# Accuracy = 2413 / (2413+460) = 0.8399
+```
+
+
+Problem 2.4 - Prediction Models
+```{r}
+library(ROCR)
+ROCRpred = prediction(test$predicted.risk, test$not.fully.paid)
+as.numeric(performance(ROCRpred, "auc")@y.values) # AUC
+```
+
+Problem 3.1 - A "Smart Baseline"
+```{r}
+model2 = glm(not.fully.paid ~ int.rate, data = loans, family = binomial)
+summary(model2)
+```
+
+Problem 3.2 - A "Smart Baseline"
+```{r}
+pred = predict(model2, type = "response", newdata = test)
+max(pred)
+table(test$not.fully.paid, pred > 0.5)
+```
+
+Problem 3.3 - A "Smart Baseline"
+```{r}
+ROCRpred2 = prediction(pred, test$not.fully.paid)
+as.numeric(performance(ROCRpred2, "auc")@y.values)
+```
+
+Problem 4.1 - Computing the Profitability of an Investment
+```{r}
+10 * exp(0.06*3)
+
+```
+
+Problem 5.1 - A Simple Investment Strategy
+```{r}
+test$profit = exp(test$int.rate*3) - 1
+test$profit[test$not.fully.paid == 1] = -1
+10 * max(test$profit) # Maximum profit
+```
+
+Problem 6.1 - An Investment Strategy Based on Risk
+```{r}
+highInterest = subset(test, int.rate >= 0.15)
+# What is the average profit of a $1 investment in one of these high-interest loans (do not include the $ sign in your answer)?
+mean(highInterest$profit)
+# What proportion of the high-interest loans were not paid back in full?
+sum(highInterest$not.fully.paid == 1) / nrow(highInterest)
+```
+
+
+Problem 6.2 - An Investment Strategy Based on Risk 
+```{r}
+cutoff = sort(highInterest$predicted.risk, decreasing=FALSE)[100]
+selectedLoans = subset(highInterest, predicted.risk <= cutoff)
+# What is the profit of the investor, who invested $1 in each of these 100 loans (do not include the $ sign in your answer)?
+sum(selectedLoans$profit)
+# How many of 100 selected loans were not paid back in full?
+sum(selectedLoans$not.fully.paid)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

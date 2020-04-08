@@ -1,0 +1,64 @@
+---
+title: "Unit3_The Framingham Heart Study"
+output: pdf_document
+---
+
+```{r}
+framingham = read.csv("framingham.csv")
+str(framingham)
+```
+
+```{r}
+library(caTools)
+set.seed(1000)
+split = sample.split(framingham$TenYearCHD, SplitRatio = 0.65) # 50 ~ 80 % in the training set
+train = subset(framingham, split==TRUE)
+test = subset(framingham, split==F)
+```
+
+
+```{r}
+framinghamLog = glm(TenYearCHD ~ ., data = train, family = binomial)
+summary(framinghamLog)
+```
+
+```{r}
+predictTest = predict(framinghamLog, type="response", newdata = test)
+table(test$TenYearCHD, predictTest > 0.5) # Threshold of 0.5
+# The accuracy is (1069+11) / (1069+11+6+187) = 0.8483896
+# The accuracy for baseline method = (1069+6) / (1069+11+6+187)  = 0.8444619
+# This logistic regression has almost the same predictive power as the baseline model (always predicting 0).
+
+```
+
+```{r}
+library(ROCR)
+ROCRpred = prediction(predictTest, test$TenYearCHD)
+as.numeric(performance(ROCRpred, "auc")@y.values)
+```
+
+The AUC is larger than 0.5, meaning that our model can differentiate low risk patients and high risk patients pretty well.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

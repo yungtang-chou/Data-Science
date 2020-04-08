@@ -1,0 +1,38 @@
+---
+title: 'Unit2: Moneyball'
+output: pdf_document
+---
+```{r}
+baseball = read.csv("baseball.csv")
+str(baseball)
+```
+
+```{r}
+moneyball = subset(baseball, Year < 2002)
+str(moneyball)
+```
+
+```{r}
+moneyball$RD = moneyball$RS - moneyball$RA
+str(moneyball)
+```
+
+```{r}
+plot(moneyball$RD, moneyball$W)
+```
+
+```{r}
+WinsReg = lm(W ~ RD, data = moneyball)
+summary(WinsReg)
+```
+
+```{r}
+RunsReg = lm(RS ~ OBP + SLG + BA, data = moneyball)
+summary(RunsReg)
+```
+
+```{r}
+RunsReg = lm(RS ~ OBP + SLG , data = moneyball)
+summary(RunsReg)
+```
+

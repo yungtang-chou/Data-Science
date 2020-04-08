@@ -1,0 +1,157 @@
+---
+title: "Unit3_Popularity of Songs Records"
+output: pdf_document
+---
+
+Problem 1.1 - Understanding the Data
+```{r}
+song = read.csv("songs.csv")
+nrow(subset(song, year == 2010))
+```
+Problem 1.2 - Understanding the Data
+```{r}
+nrow(subset(song, artistname == 'Michael Jackson'))
+
+```
+
+Problem 1.3 - Understanding the Data
+```{r}
+subset(song, artistname == 'Michael Jackson' & Top10 == 1)
+```
+
+Problem 1.4 - Understanding the Data
+```{r}
+table(song$timesignature)
+```
+
+Problem 1.5 - Understanding the Data
+```{r}
+song[which.max(song$tempo),]
+```
+
+Problem 2.1 - Creating Our Prediction Model
+```{r}
+SongsTrain = subset(song, year <= 2009)
+SongsTest = subset(song, year > 2009)
+nrow(SongsTrain)
+```
+
+Problem 2.2 - Creating our Prediction Model
+```{r}
+nonvars = c("year", "songtitle", "artistname", "songID", "artistID")
+SongsTrain = SongsTrain[ , !(names(SongsTrain) %in% nonvars)]
+SongsTest = SongsTest[ , !(names(SongsTest) %in% nonvars)]
+
+mod1 = glm(Top10 ~ ., data = SongsTrain, family = binomial)
+summary(mod1)
+```
+
+Problem 3.1 - Beware of Multicollinearity Issues!
+```{r}
+cor(song[c("loudness","energy")])
+```
+
+Problem 3.2 - Beware of Multicollinearity Issues!
+Problem 3.3 - Beware of Multicollinearity Issues!
+```{r}
+SongsLog2 = glm(Top10 ~ . - loudness, data=SongsTrain, family=binomial)
+# We just subtracted the variable loudness. 
+# We couldn't do this with the variables "songtitle" and "artistname", 
+# because they are not numeric variables, and we might get different values in the test set that the training set has never seen.
+summary(SongsLog2)
+
+SongsLog3 = glm(Top10 ~ . - energy, data=SongsTrain, family=binomial)
+summary(SongsLog3)
+```
+
+Problem 4.1 - Validating Our Model
+```{r}
+predTest= predict(SongsLog3, type="response", newdata = SongsTest)
+table(SongsTest$Top10, predTest > 0.45)
+# (309+19)/(309+19+40+5) = 0.8793566
+```
+
+Problem 4.2 - Validating Our Model
+```{r}
+table(song$Top10)
+# The baseline model would be to predict all 0.
+
+table(SongsTest$Top10)
+# 314 / (314+59)  = 0.8418231
+```
+
+Problem 4.3 - Validating Our Model
+```{r}
+table(SongsTest$Top10, predTest > 0.45)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
