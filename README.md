@@ -64,7 +64,7 @@ General Framework: [[Notebook]](https://github.com/patrick-ytchou/Data-Science/b
 
 **Speical Topics**
 
-* 2020-02-24: **Market Basket Analysis: Association Rule Mining** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/3.%20Special%20Topics/AssociationRules/Market%20Basket%20Analysis%20--%20Association%20Rule%20Explained.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/3.%20Special%20Topics/AssociationRules/Market%20Basket%20Analysis%20--%20Association%20Rule%20Explained.ipynb)
+* 2020-04-20: **Market Basket Analysis: Association Rule Mining** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/3.%20Special%20Topics/AssociationRules/Market%20Basket%20Analysis%20--%20Association%20Rule%20Explained.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/3.%20Special%20Topics/AssociationRules/Market%20Basket%20Analysis%20--%20Association%20Rule%20Explained.ipynb)
     * Market Basket Analysis | Apriori Algorithm
 
 
@@ -73,6 +73,8 @@ General Framework: [[Notebook]](https://github.com/patrick-ytchou/Data-Science/b
 
 
 **Visualization Technique**
+
+* 2020-04-20: **Zillow's Home Value Prediction Exploratory Data Analysis** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/6.%20Visualization/Zillow's%20Home%20Value%20Prediction%20Exploratory%20Data%20Analysis.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/6.%20Visualization/Zillow%27s%20Home%20Value%20Prediction%20Exploratory%20Data%20Analysis.ipynb)
 
 
 ---
