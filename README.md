@@ -17,8 +17,6 @@ Data Visualization is a critical skill not only for data exploration but also fo
 
 [Workout Wednesday](http://www.workout-wednesday.com/) is a weekly data visualization challenge to help anyone interested in data visualization to build on the skills in Tableau. Each Wednesday a challenge is release and participants are asked to replicate the challenge that is posed as closely as possible. Thanks to this wonderful community, there are numerous resources that we can learn visualization from.
 
-<iframe seamless frameborder="0" src="https://public.tableau.com/views/WOW2020Week16-Canyoushowtheadjustedtargetmissingpipeline_15879189153500/Dashboard1?:embed=yes&:display_count=yes&:showVizHome=no" width = '800' height = '600' scrolling='yes' ></iframe>
-
 Check out my [Tableau Public Gallery](https://public.tableau.com/profile/yung.tang.chou#!/) if you are interesed in more informative visualization!
 
 ---
