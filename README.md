@@ -11,6 +11,15 @@ General Framework: [[Notebook]](https://github.com/patrick-ytchou/Data-Science/b
 * 2020-02-24: **Yelp Review Analysis: Sentiment Analysis & Topic Modeling** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/1.%20Projects/YelpReviewAnalysis/Yelp%20Review%20Analysis%20--%20Sentiment%20Analysis%20%26%20Topic%20Modeling.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/1.%20Projects/YelpReviewAnalysis/Yelp%20Review%20Analysis%20--%20Sentiment%20Analysis%20%26%20Topic%20Modeling.ipynb)
     * Sentiment Analysis (Textblob, VADER, Afinn)| Topic Modeling | Natural Language Processing 
 
+---
+## Tableau Visualization
+Data Visualization is a critical skill not only for data exploration but also for the decision making processes, and Tableau is one of the most widely used software for visualization. As such, starting from April 2020 I deicde to put aside one hour weekly to create hone my visualization skills and find unique insights from data.
+
+[Workout Wednesday](http://www.workout-wednesday.com/) is a weekly data visualization challenge to help anyone interested in data visualization to build on the skills in Tableau. Each Wednesday a challenge is release and participants are asked to replicate the challenge that is posed as closely as possible. Thanks to this wonderful community, there are numerous resources that we can learn visualization from.
+
+<iframe seamless frameborder="0" src="https://public.tableau.com/views/WOW2020Week16-Canyoushowtheadjustedtargetmissingpipeline_15879189153500/Dashboard1?:embed=yes&:display_count=yes&:showVizHome=no" width = '800' height = '600' scrolling='yes' ></iframe>
+
+Check out my [Tableau Public Gallery](https://public.tableau.com/profile/yung.tang.chou#!/) if you are interesed in more informative visualization!
 
 ---
 ## Data Science Learning Notes
