@@ -77,7 +77,7 @@ Check out my [Tableau Public Gallery](https://public.tableau.com/profile/yung.ta
 
 **Feature Engineering**
 
-* **Imbalanced Data Manipulation** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/3.%20Special%20Topics/AssociationRules/Market%20Basket%20Analysis%20--%20Association%20Rule%20Explained.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/3.%20Special%20Topics/AssociationRules/Market%20Basket%20Analysis%20--%20Association%20Rule%20Explained.ipynb)
+* **Imbalanced Data Manipulation** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/7.%20Feature%20Engineering/ImbalancedDataManipulation/Imbalanced%20Dataset%20Manipulation.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/7.%20Feature%20Engineering/ImbalancedDataManipulation/Imbalanced%20Dataset%20Manipulation.ipynb)
     * Imbalanced Data Manipulation | Tomek's Link | SMOTE | SMOTETomek
 
 
