@@ -16,6 +16,7 @@ The goal of this repository is to summarize and organize my knowledge for machin
 | **Stacking** | **0.07505** | **120 / 3770** | **3.2%** |
 
 * **Rossmann Store Sales** (Ongoing for Better Results)
+
 | Model | Private Leaderboard Score | Private Leaderboard Ranking | Percentile (Top) |
 | :---: | :---:| :---: | :---: |
 | **LightGBM** | **0.11526** | **155 / 3303** | **4.7%** |
