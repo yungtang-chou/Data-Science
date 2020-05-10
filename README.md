@@ -7,13 +7,19 @@ The goal of this repository is to summarize and organize my knowledge for machin
 ---
 ## Featured Projects & Competitions
 
-* **Zillow's Home Value Prediction** [[Repo]](https://github.com/patrick-ytchou/KaggleZillowHomeValue)
+* **Zillow's Home Value Prediction** [[Repository]](https://github.com/patrick-ytchou/KaggleZillowHomeValue)
 
 | Model | Private Leaderboard Score | Private Leaderboard Ranking | Percentile (Top) |
 | :---: | :---:| :---: | :---: |
 | LightGBM | 0.07540 | 760 / 3770 | 20.2% |
 | CatBoost | 0.07514 | 250 / 3770 | 6.6% |
 | **Stacking** | **0.07505** | **120 / 3770** | **3.2%** |
+
+* **Rossmann Store Sales** (Ongoing for Better Results)
+| Model | Private Leaderboard Score | Private Leaderboard Ranking | Percentile (Top) |
+| :---: | :---:| :---: | :---: |
+| **LightGBM** | **0.11526** | **155 / 3303** | **4.7%** |
+
 
 * **Yelp Review Analysis: Sentiment Analysis & Topic Modeling** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/1.%20Projects/YelpReviewAnalysis/Yelp%20Review%20Analysis%20--%20Sentiment%20Analysis%20%26%20Topic%20Modeling.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/1.%20Projects/YelpReviewAnalysis/Yelp%20Review%20Analysis%20--%20Sentiment%20Analysis%20%26%20Topic%20Modeling.ipynb)
     * Sentiment Analysis (Textblob, VADER, Afinn)| Topic Modeling | Natural Language Processing 
@@ -27,7 +33,7 @@ Data Visualization is a critical skill not only for data exploration but also fo
 Check out my [Tableau Public Gallery](https://public.tableau.com/profile/yung.tang.chou#!/) if you are interesed in more informative visualization!
 
 ---
-## Data Science Learning Notes
+## Learning Notes
 
 **Regression Analysis**
 * **Regression Analysis: Assumptions for Linear Regression** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/2.%20Algorithms/Regression/Regression%20Analysis%20--%20Assumptions%20for%20Linear%20Regression.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/2.%20Algorithms/Regression/Regression%20Analysis%20--%20Assumptions%20for%20Linear%20Regression.ipynb)
