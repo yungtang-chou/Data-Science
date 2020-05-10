@@ -5,8 +5,15 @@ As I start my journey in data science, I will continuously update this repositor
 The goal of this repository is to summarize and organize my knowledge for machine learning. All the codes will be written in Jupyter Notebook format, and should be reproducible by either cloning or downloading the whole repository. The content of the notebook aims to strike a good balance between background knowledge, mathematical formulations, naive algorithm implementation (via numpy, pandas, statsmodels, scipy, matplotlib, seaborn, etc.), and sophisticated implementation through open-source library.
 
 ---
-## Featured Projects
-General Framework: [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/Projects/Project%20Templates.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Projects/Project%20Templates.ipynb)
+## Featured Projects & Competitions
+
+* **Zillow's Home Value Prediction** [[Repo]](https://github.com/patrick-ytchou/KaggleZillowHomeValue)
+
+| Model | Private Leaderboard Score | Private Leaderboard Ranking | Percentile (Top) |
+| :---: | :---:| :---: | :---: |
+| LightGBM | 0.07540 | 760 / 3770 | 20.2% |
+| CatBoost | 0.07514 | 250 / 3770 | 6.6% |
+| **Stacking** | **0.07505** | **120 / 3770** | **3.2%** |
 
 * **Yelp Review Analysis: Sentiment Analysis & Topic Modeling** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/1.%20Projects/YelpReviewAnalysis/Yelp%20Review%20Analysis%20--%20Sentiment%20Analysis%20%26%20Topic%20Modeling.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/1.%20Projects/YelpReviewAnalysis/Yelp%20Review%20Analysis%20--%20Sentiment%20Analysis%20%26%20Topic%20Modeling.ipynb)
     * Sentiment Analysis (Textblob, VADER, Afinn)| Topic Modeling | Natural Language Processing 
