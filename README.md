@@ -5,6 +5,11 @@ As I start my journey in data science, I will continuously update this repositor
 The goal of this repository is to summarize and organize my knowledge for machine learning. All the codes will be written in Jupyter Notebook format, and should be reproducible by either cloning or downloading the whole repository. The content of the notebook aims to strike a good balance between background knowledge, mathematical formulations, naive algorithm implementation (via numpy, pandas, statsmodels, scipy, matplotlib, seaborn, etc.), and sophisticated implementation through open-source library.
 
 ---
+## Best Articles for Data Science Career
+
+[[Should We Stay in Data Science?]](https://towardsdatascience.com/the-most-realistic-data-science-career-guide-d12c4af87cc8) by Ian Xiao
+
+---
 ## Featured Projects & Competitions
 
 * **Zillow's Home Value Prediction** [[Repository]](https://github.com/patrick-ytchou/KaggleZillowHomeValue)
@@ -34,7 +39,6 @@ Check out my [Tableau Public Gallery](https://public.tableau.com/profile/yung.ta
 In this section I will keep track of some useful links of tableau tutorials.
 
 [[Tableau Errors: Cannot mix Aggregate and Non Aggregate Arguments]](https://www.youtube.com/watch?v=czsY8z2SOro) by The Information Lab
-
 
 ---
 ## Learning Notes
@@ -146,8 +150,6 @@ Below is some wonderful data science resources collected online.
 **Github:** 
 
 [anantd/ab-testing](https://github.com/anantd/ab-testing)
-
-
 
 ### Data Science Tech Blogs:
 
