@@ -54,11 +54,11 @@ In this section I will keep track of some useful links of tableau tutorials.
 
 **Algorithms**
 
-* **Decision Tree Classifier From Scratch** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/2.%20Algorithms/DecisionTree/Decision%20Tree%20Classifier%20from%20Scratch.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/2.%20Algorithms/DecisionTree/Decision%20Tree%20Classifier%20from%20Scratch.ipynb)
+* **Decision Tree Classifier From Scratch** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/2.%20Algorithms/Tree/Decision%20Tree%20Classifier%20from%20Scratch.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/2.%20Algorithms/Tree/Decision%20Tree%20Classifier%20from%20Scratch.ipynb)
     * Gini Impurity | Parent/Child Nodes | Decision Tree | Tree Visualization
 
-* **K-Nearest Neighbors from Scratch** [[]]()
-
+* **K-Nearest Neighbors from Scratch** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/2.%20Algorithms/Neighbors/K-Nearest%20Neighbors%20from%20Scratch.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/2.%20Algorithms/Neighbors/K-Nearest%20Neighbors%20from%20Scratch.ipynb)
+    * Minkowski | Regressor | Classifier | KD-Tree | Ball-Tree | Weighted KNN
 
 **Neural Network**
 * **Tips for Neural Network Training** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/2.%20Algorithms/NeuralNetwork/Neural%20Network%20-%20Tips%20for%20Neural%20Network%20Training.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/2.%20Algorithms/NeuralNetwork/Neural%20Network%20-%20Tips%20for%20Neural%20Network%20Training.ipynb)
