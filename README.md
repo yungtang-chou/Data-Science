@@ -52,13 +52,20 @@ In this section I will keep track of some useful links of tableau tutorials.
     * Sentiment Analysis (Textblob, VADER, Afinn)| Topic Modeling | Natural Language Processing 
 
 
+**Algorithms**
+
+* **Decision Tree Classifier From Scratch** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/2.%20Algorithms/DecisionTree/Decision%20Tree%20Classifier%20from%20Scratch.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/2.%20Algorithms/DecisionTree/Decision%20Tree%20Classifier%20from%20Scratch.ipynb)
+    * Gini Impurity | Parent/Child Nodes | Decision Tree | Tree Visualization
+
+* **K-Nearest Neighbors from Scratch** [[]]()
+
+
 **Neural Network**
 * **Tips for Neural Network Training** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/2.%20Algorithms/NeuralNetwork/Neural%20Network%20-%20Tips%20for%20Neural%20Network%20Training.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/2.%20Algorithms/NeuralNetwork/Neural%20Network%20-%20Tips%20for%20Neural%20Network%20Training.ipynb)
 	* Activation Function | Optimizer | EarlyStopping | Regularization | Dropout
 
 * **Convolutional Neural Network (CNN) with MNIST** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/2.%20Algorithms/NeuralNetwork/Neural%20Network%20-%20Convolutional%20Neural%20Network%20with%20MNIST.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/2.%20Algorithms/NeuralNetwork/Neural%20Network%20-%20Convolutional%20Neural%20Network%20%28CNN%29%20with%20MNIST.ipynb)
 	* Convolution | Max Pooling | Flatten
-
 
 **Optimization Techniques**
 
@@ -72,12 +79,6 @@ In this section I will keep track of some useful links of tableau tutorials.
 
 * **Model Explanation with Santander Dataset** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/3.%20Special%20Topics/ModelExplanation/Model%20Explanation%20with%20Santander%20Dataset.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/3.%20Special%20Topics/ModelExplanation/Model%20Explanation%20with%20Santander%20Dataset.ipynb)
 	* Tree Visualization | Permutation Feature Importance | Partial Dependence Plot | SHAP Values
-
-
-**Classification & Clustering Analysis**
-
-* **Decision Tree Classifier From Scratch** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/2.%20Algorithms/DecisionTree/Decision%20Tree%20Classifier%20from%20Scratch.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/2.%20Algorithms/DecisionTree/Decision%20Tree%20Classifier%20from%20Scratch.ipynb)
-    * Gini Impurity | Parent/Child Nodes | Decision Tree | Tree Visualization
 
 **Statistical Inference**
 
