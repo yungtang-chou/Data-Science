@@ -111,6 +111,6 @@ In this section I will keep track of some useful links of tableau tutorials.
 
 * `Recommender System`
 
-* `Support Vector Machines`
+* `PU Learning`
 
 * `Entity Embedding`
