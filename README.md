@@ -107,8 +107,6 @@ In this section I will keep track of some useful links of tableau tutorials.
 ---
 ## Pending Topics
 
-* `Clustering Analysis`
-
 * `Recommender System`
 
 * `PU Learning`
