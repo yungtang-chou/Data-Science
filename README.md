@@ -35,6 +35,9 @@ The goal of this repository is to summarize and organize my knowledge for machin
 
 * **K-Nearest Neighbors from Scratch** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/Notes/ML%20Algos/Clustering/K-Nearest%20Neighbors%20from%20Scratch.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Notes/ML%20Algos/Clustering/K-Nearest%20Neighbors%20from%20Scratch.ipynb)
     * Minkowski | Regressor | Classifier | KD-Tree | Ball-Tree | Weighted KNN
+  
+* **PU Learning** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/Notes/ML%20Algos/PU%20Learning.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Notes/ML%20Algos/PU%20Learning.ipynb)
+    * PU Learning | Clustering | PU Bagging | Two-step Methods
 
 
 **Linear Regression**
