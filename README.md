@@ -1,7 +1,4 @@
 # Data Science
-
-As I start my journey in data science, I will continuously update this repository to document my learning. This repository will be divided into the following sections: featured projects, data science learning notes, and other special topics.
-
 The goal of this repository is to summarize and organize my knowledge for machine learning. All the codes will be written in Jupyter Notebook format, and should be reproducible by either cloning or downloading the whole repository. The content of the notebook aims to strike a good balance between background knowledge, mathematical formulations, naive algorithm implementation (via numpy, pandas, statsmodels, scipy, matplotlib, seaborn, etc.), and sophisticated implementation through open-source library.
 
 ---
