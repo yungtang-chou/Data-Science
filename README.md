@@ -7,7 +7,7 @@ The goal of this repository is to summarize and organize my knowledge for machin
 ---
 ## Featured Projects
 
-* **Zillow's Home Value Prediction** [[Directory]](https://github.com/patrick-ytchou/KaggleZillowHomeValue)
+* **Zillow's Home Value Prediction** [[Directory]](https://github.com/patrick-ytchou/Data-Science/tree/master/Projects/ZillowHomeValue)
 
 | Model | Private Leaderboard Score | Private Leaderboard Ranking | Percentile (Top) |
 | :---: | :---:| :---: | :---: |
