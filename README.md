@@ -4,11 +4,11 @@ The goal of this repository is to summarize and organize my knowledge for machin
 ---
 ## Featured Projects
 
-* **Zillow's Home Value Prediction** [[Directory]](https://github.com/patrick-ytchou/Data-Science/tree/master/Projects/ZillowHomeValue)
+* **Zillow's Home Value Prediction** [[Directory]](https://github.com/patrick-ytchou/Kaggle-Zillow-Home-Value)
 
 | Model | Private Leaderboard Score | Private Leaderboard Ranking | Percentile (Top) |
 | :---: | :---:| :---: | :---: |
-| LightGBM | 0.07540 | 760 / 3770 | 20.2% |
+| Random Forest | 0.07540 | 760 / 3770 | 20.2% |
 | CatBoost | 0.07514 | 250 / 3770 | 6.6% |
 | **Stacking** | **0.07505** | **120 / 3770** | **3.2%** |
 
