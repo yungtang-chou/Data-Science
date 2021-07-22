@@ -52,11 +52,18 @@ The goal of this repository is to summarize and organize my knowledge for machin
     * MSE | MAE | RMSE | MBE | MAPE | RMSLE | R² | Adjusted R²
 
 **Neural Network**
-* **Tips for Neural Network Training** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/Notes/ML%20Algos/NeuralNetwork/Neural%20Network%20-%20Tips%20for%20Neural%20Network%20Training.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Notes/ML%20Algos/NeuralNetwork/Neural%20Network%20-%20Tips%20for%20Neural%20Network%20Training.ipynb)
+* **Tips for Neural Network Training** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/Notes/ML%20Algos/NeuralNetwork/Tips%20for%20Neural%20Network%20Training.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Notes/ML%20Algos/NeuralNetwork/Tips%20for%20Neural%20Network%20Training.ipynb)
 	* Activation Function | Optimizer | EarlyStopping | Regularization | Dropout
 
-* **Convolutional Neural Network (CNN) with MNIST** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/Notes/ML%20Algos/NeuralNetwork/Neural%20Network%20-%20Convolutional%20Neural%20Network%20with%20MNIST.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Notes/ML%20Algos/NeuralNetwork/Neural%20Network%20-%20Convolutional%20Neural%20Network%20with%20MNIST.ipynb)
+* **Convolutional Neural Network (CNN) with MNIST** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/Notes/ML%20Algos/NeuralNetwork/Convolutional%20Neural%20Network%20with%20MNIST.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Notes/ML%20Algos/NeuralNetwork/Convolutional%20Neural%20Network%20with%20MNIST.ipynb)
 	* Convolution | Max Pooling | Flatten
+
+* **Simple Recurrent Neural Net (RNN) from Scratch** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/Notes/ML%20Algos/NeuralNetwork/Simple%20Recurrent%20Neural%20Net%20(RNN)%20from%20Scratch.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Notes/ML%20Algos/NeuralNetwork/Simple%20Recurrent%20Neural%20Net%20%28RNN%29%20from%20Scratch.ipynb)
+	* Recurrent Neural Network | Vanishing Gradient Problem 
+
+* **Time Sequence Prediction with LSTM** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/Notes/ML%20Algos/NeuralNetwork/Time%20Sequence%20Prediction%20with%20LSTM.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Notes/ML%20Algos/NeuralNetwork/Time%20Sequence%20Prediction%20with%20LSTM.ipynb)
+	* LSTM | Forget Gate | Input Gate | Output Gate 
+
 
 **Optimization Techniques**
 
