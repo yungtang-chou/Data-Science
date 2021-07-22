@@ -19,12 +19,6 @@ The goal of this repository is to summarize and organize my knowledge for machin
 ---
 ## Learning Notes
 
-**Speical Topics**
-
-* **Market Basket Analysis: Association Rule Mining** [[Notebook]](hhttps://github.com/patrick-ytchou/Data-Science/blob/master/Notes/AssociationRules/Market%20Basket%20Analysis%20--%20Association%20Rule%20Explained.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Notes/AssociationRules/Market%20Basket%20Analysis%20--%20Association%20Rule%20Explained.ipynb)
-    * Market Basket Analysis | Apriori Algorithm
-
-
 **Machine Learning Algorithms**
 
 * **Decision Tree Classifier From Scratch** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/Notes/ML%20Algos/Tree/Decision%20Tree%20Classifier%20from%20Scratch.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Notes/ML%20Algos/Tree/Decision%20Tree%20Classifier%20from%20Scratch.ipynb)
@@ -33,10 +27,6 @@ The goal of this repository is to summarize and organize my knowledge for machin
 * **K-Nearest Neighbors from Scratch** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/Notes/ML%20Algos/Clustering/K-Nearest%20Neighbors%20from%20Scratch.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Notes/ML%20Algos/Clustering/K-Nearest%20Neighbors%20from%20Scratch.ipynb)
     * Minkowski | Regressor | Classifier | KD-Tree | Ball-Tree | Weighted KNN
   
-* **PU Learning** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/Notes/ML%20Algos/PU%20Learning.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Notes/ML%20Algos/PU%20Learning.ipynb)
-    * PU Learning | Clustering | PU Bagging | Two-step Methods
-
-
 **Linear Regression**
 * **Regression Analysis: Assumptions for Linear Regression** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/Notes/ML%20Algos/Regression/Regression%20Analysis%20--%20Assumptions%20for%20Linear%20Regression.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Notes/ML%20Algos/Regression/Regression%20Analysis%20--%20Assumptions%20for%20Linear%20Regression.ipynb)
     * Multicollinearity | Heteroscedasticity | Auto-Correlation
@@ -65,7 +55,7 @@ The goal of this repository is to summarize and organize my knowledge for machin
 	* LSTM | Forget Gate | Input Gate | Output Gate 
 
 
-**Optimization Techniques**
+**Optimization**
 
 * **Genetic Algorithm from scratch: Traveling Salesman Problem** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/Notes/ML%20Algos/Optimization/Genetic%20Algorithm%20from%20Scratch%20--%20Traveling%20Salesman%20Problem.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Notes/ML%20Algos/Optimization/Genetic%20Algorithm%20from%20Scratch%20--%20Traveling%20Salesman%20Problem.ipynb)
     * Genetic Algorithm | Traveling Salesman Problem 
@@ -73,15 +63,26 @@ The goal of this repository is to summarize and organize my knowledge for machin
 * **Gradient Descent from scratch** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/Notes/ML%20Algos/Optimization/Gradient%20Descent%20from%20Scratch.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Notes/ML%20Algos/Optimization/Gradient%20Descent%20from%20Scratch.ipynb)
 	* Vanilla Gradient Descent | Adagrad | Stochastic Gradient Descent
 
-**Model Explainability**
-
-* **Model Explanation with Santander Dataset** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/Notes/ModelExplanation/Model%20Explanation%20with%20Santander%20Dataset.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Notes/ModelExplanation/Model%20Explanation%20with%20Santander%20Dataset.ipynb)
-	* Tree Visualization | Permutation Feature Importance | Partial Dependence Plot | SHAP Values
 
 **Analytics**
 
 * **A/B Testing: Determine Sample Size** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/Notes/AB%20Testing/AB-Testing%20-%20Determine%20Sample%20Size.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Notes/AB%20Testing/AB-Testing%20-%20Determine%20Sample%20Size.ipynb)
 	* A/B Testing | Effect Size | Cohen's d
+
+* **Cohort Analysis & RFM Model in Python** [[Notebook]]() | [[nbviewer]]()
+    * (pending)
+
+
+**Speical Topic**
+
+* **Market Basket Analysis: Association Rule Mining** [[Notebook]](hhttps://github.com/patrick-ytchou/Data-Science/blob/master/Notes/AssociationRules/Market%20Basket%20Analysis%20--%20Association%20Rule%20Explained.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Notes/AssociationRules/Market%20Basket%20Analysis%20--%20Association%20Rule%20Explained.ipynb)
+    * Market Basket Analysis | Apriori Algorithm
+
+* **Model Explanation with Santander Dataset** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/Notes/ModelExplanation/Model%20Explanation%20with%20Santander%20Dataset.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Notes/ModelExplanation/Model%20Explanation%20with%20Santander%20Dataset.ipynb)
+	* Tree Visualization | Permutation Feature Importance | Partial Dependence Plot | SHAP Values
+
+* **PU Learning** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/Notes/ML%20Algos/PU%20Learning.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Notes/ML%20Algos/PU%20Learning.ipynb)
+    * PU Learning | Clustering | PU Bagging | Two-step Methods
 
 **Feature Engineering**
 
@@ -90,19 +91,8 @@ The goal of this repository is to summarize and organize my knowledge for machin
 
 
 ---
-## Tableau Visualization
-Data Visualization is a critical skill not only for data exploration but also for the decision making processes, and Tableau is one of the most widely used software for visualization. As such, starting from April 2020 I deicde to put aside one hour weekly to create hone my visualization skills and find unique insights from data.
-
-[Workout Wednesday](http://www.workout-wednesday.com/) is a weekly data visualization challenge to help anyone interested in data visualization to build on the skills in Tableau. Each Wednesday a challenge is release and participants are asked to replicate the challenge that is posed as closely as possible. Thanks to this wonderful community, there are numerous resources that we can learn visualization from.
-
-Check out my [Tableau Public Gallery](https://public.tableau.com/profile/yung.tang.chou#!/) if you are interesed in more informative visualization!
-
-
----
 ## Pending Topics
 
 * `Recommender System`
-
-* `PU Learning`
 
 * `Entity Embedding`
