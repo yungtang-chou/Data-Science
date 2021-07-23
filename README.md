@@ -22,8 +22,10 @@ The goal of this repository is to summarize and organize my knowledge for machin
 
 * **K-Nearest Neighbors from Scratch** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/Algorithms/Clustering/K-Nearest%20Neighbors%20from%20Scratch.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Algorithms/Clustering/K-Nearest%20Neighbors%20from%20Scratch.ipynb)
     * Minkowski | Regressor | Classifier | KD-Tree | Ball-Tree | Weighted KNN
-  
-**Linear Regression**
+
+* **Introduction to Logistic Regression from scratch** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/Algorithms/Classification/Introduction%20to%20Logistic%20Regression%20from%20scratch.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Algorithms/Classification/Introduction%20to%20Logistic%20Regression%20from%20scratch.ipynb)
+    * Logistic Regression | Threshold Analysis | Solvers | Logit | Log Odd
+
 * **Regression Analysis: Assumptions for Linear Regression** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/Algorithms/Regression/Regression%20Analysis%20--%20Assumptions%20for%20Linear%20Regression.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Algorithms/Regression/Regression%20Analysis%20--%20Assumptions%20for%20Linear%20Regression.ipynb)
     * Multicollinearity | Heteroscedasticity | Auto-Correlation
     * ResidualsPlot | White Test | Q-Q Plot | Durbin-Watson
