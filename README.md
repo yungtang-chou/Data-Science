@@ -94,6 +94,8 @@ The goal of this repository is to summarize and organize my knowledge for machin
 ---
 ## Pending Topics
 
-* `Recommender System`
+* `Logistic Regression`
 
 * `Entity Embedding`
+
+* `Recommender System`
