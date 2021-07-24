@@ -1,8 +1,8 @@
-# Data Science
+## Data Science
 The goal of this repository is to summarize and organize my knowledge for machine learning. All the codes will be written in Jupyter Notebook format, and should be reproducible by either cloning or downloading the whole repository. 
 
 ---
-## Featured Projects
+### Featured Projects
 
 * **Zillow's Home Value Prediction** [[Repository]](https://github.com/patrick-ytchou/Kaggle-Zillow-Home-Value)
 
@@ -13,18 +13,38 @@ The goal of this repository is to summarize and organize my knowledge for machin
 | **Stacking** | **0.07505** | **120 / 3770** | **3.2%** |
 
 ---
-## Learning Notes
+### Machine Learning Notes
 
-**Machine Learning Algorithms**
+
+#### **Special Topic**
+* **Yelp Review Analysis: Sentiment Analysis & Topic Modeling** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/SpecialTopic/Yelp%20Review%20Analysis%20--%20Sentiment%20Analysis%20%26%20Topic%20Modeling.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/SpecialTopic/Yelp%20Review%20Analysis%20--%20Sentiment%20Analysis%20%26%20Topic%20Modeling.ipynb)
+    * Sentiment Analysis (Textblob, VADER, Afinn)| Topic Modeling | Natural Language Processing 
+
+* **Market Basket Analysis: Association Rule Mining** [[Notebook]](hhttps://github.com/patrick-ytchou/Data-Science/blob/master/Notes/AssociationRules/Market%20Basket%20Analysis%20--%20Association%20Rule%20Explained.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Notes/AssociationRules/Market%20Basket%20Analysis%20--%20Association%20Rule%20Explained.ipynb)
+    * Market Basket Analysis | Apriori Algorithm
+
+* **Model Explanation with Santander Dataset** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/SpecialTopic/Model%20Explanation%20with%20Santander%20Dataset.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/SpecialTopic/Model%20Explanation%20with%20Santander%20Dataset.ipynb)
+	* Tree Visualization | Permutation Feature Importance | Partial Dependence Plot | SHAP Values
+
+* **PU Learning** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/SpecialTopic/PU%20Learning.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/SpecialTopic/PU%20Learning.ipynb)
+    * PU Learning | Clustering | PU Bagging | Two-step Methods
+
+#### **Classification**
 
 * **Decision Tree Classifier From Scratch** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/Algorithms/Tree/Decision%20Tree%20Classifier%20from%20Scratch.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Algorithms/Tree/Decision%20Tree%20Classifier%20from%20Scratch.ipynb)
     * Gini Impurity | Parent/Child Nodes | Decision Tree | Tree Visualization
 
-* **K-Nearest Neighbors from Scratch** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/Algorithms/Clustering/K-Nearest%20Neighbors%20from%20Scratch.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Algorithms/Clustering/K-Nearest%20Neighbors%20from%20Scratch.ipynb)
+* **K-Nearest Neighbors from Scratch** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/Algorithms/Classification/K-Nearest%20Neighbors%20from%20Scratch.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Algorithms/Classification/K-Nearest%20Neighbors%20from%20Scratch.ipynb)
     * Minkowski | Regressor | Classifier | KD-Tree | Ball-Tree | Weighted KNN
 
 * **Introduction to Logistic Regression from scratch** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/Algorithms/Classification/Introduction%20to%20Logistic%20Regression%20from%20scratch.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Algorithms/Classification/Introduction%20to%20Logistic%20Regression%20from%20scratch.ipynb)
     * Logistic Regression | Threshold Analysis | Solvers | Logit | Log Odd
+
+#### **Clustering**
+* **Gaussian Mixture Model and EM Algorithm** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/Algorithms/Clustering/Gaussian%20Mixture%20Model%20and%20EM%20Algorithm.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Algorithms/Clustering/Gaussian%20Mixture%20Model%20and%20EM%20Algorithm.ipynb)
+    * Gaussian Mixture Model | Expectation Maximization
+
+#### **Regression**
 
 * **Regression Analysis: Assumptions for Linear Regression** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/Algorithms/Regression/Regression%20Analysis%20--%20Assumptions%20for%20Linear%20Regression.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Algorithms/Regression/Regression%20Analysis%20--%20Assumptions%20for%20Linear%20Regression.ipynb)
     * Multicollinearity | Heteroscedasticity | Auto-Correlation
@@ -39,7 +59,7 @@ The goal of this repository is to summarize and organize my knowledge for machin
 * **Regression Analysis: Loss Functions for Regression Analysis** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/Algorithms/Regression/Regression%20Analysis%20--%20Loss%20Functions%20for%20Regression%20Analysis.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Algorithms/Regression/Regression%20Analysis%20--%20Loss%20Functions%20for%20Regression%20Analysis.ipynb)
     * MSE | MAE | RMSE | MBE | MAPE | RMSLE | R² | Adjusted R²
 
-**Neural Network**
+#### **Neural Network**
 * **Tips for Neural Network Training** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/Algorithms/NeuralNetwork/Tips%20for%20Neural%20Network%20Training.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Algorithms/NeuralNetwork/Tips%20for%20Neural%20Network%20Training.ipynb)
 	* Activation Function | Optimizer | EarlyStopping | Regularization | Dropout
 
@@ -53,7 +73,7 @@ The goal of this repository is to summarize and organize my knowledge for machin
 	* LSTM | Forget Gate | Input Gate | Output Gate 
 
 
-**Optimization**
+#### **Optimization**
 
 * **Genetic Algorithm from scratch: Traveling Salesman Problem** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/Algorithms/Optimization/Genetic%20Algorithm%20from%20Scratch%20--%20Traveling%20Salesman%20Problem.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Algorithms/Optimization/Genetic%20Algorithm%20from%20Scratch%20--%20Traveling%20Salesman%20Problem.ipynb)
     * Genetic Algorithm | Traveling Salesman Problem 
@@ -62,7 +82,7 @@ The goal of this repository is to summarize and organize my knowledge for machin
 	* Vanilla Gradient Descent | Adagrad | Stochastic Gradient Descent
 
 
-**Analytics**
+#### **Analytics**
 
 * **A/B Testing: Determine Sample Size** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/Analytics/AB-Testing%20-%20Determine%20Sample%20Size.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Analytics/AB-Testing%20-%20Determine%20Sample%20Size.ipynb)
 	* A/B Testing | Effect Size | Cohen's d
@@ -71,33 +91,7 @@ The goal of this repository is to summarize and organize my knowledge for machin
     * Time-based Cohort Analysis | HeatMap
 
 
-**Speical Topic**
-
-* **Yelp Review Analysis: Sentiment Analysis & Topic Modeling** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/SpecialTopic/Yelp%20Review%20Analysis%20--%20Sentiment%20Analysis%20%26%20Topic%20Modeling.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/SpecialTopic/Yelp%20Review%20Analysis%20--%20Sentiment%20Analysis%20%26%20Topic%20Modeling.ipynb)
-    * Sentiment Analysis (Textblob, VADER, Afinn)| Topic Modeling | Natural Language Processing 
-
-* **Market Basket Analysis: Association Rule Mining** [[Notebook]](hhttps://github.com/patrick-ytchou/Data-Science/blob/master/Notes/AssociationRules/Market%20Basket%20Analysis%20--%20Association%20Rule%20Explained.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Notes/AssociationRules/Market%20Basket%20Analysis%20--%20Association%20Rule%20Explained.ipynb)
-    * Market Basket Analysis | Apriori Algorithm
-
-* **Model Explanation with Santander Dataset** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/SpecialTopic/Model%20Explanation%20with%20Santander%20Dataset.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/SpecialTopic/Model%20Explanation%20with%20Santander%20Dataset.ipynb)
-	* Tree Visualization | Permutation Feature Importance | Partial Dependence Plot | SHAP Values
-
-* **PU Learning** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/SpecialTopic/PU%20Learning.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/SpecialTopic/PU%20Learning.ipynb)
-    * PU Learning | Clustering | PU Bagging | Two-step Methods
-
-
-
-**Feature Engineering**
+#### **Feature Engineering**
 
 * **Imbalanced Data Manipulation** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/FeatureEngineering/Imbalanced%20Dataset%20Manipulation.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/FeatureEngineering/Imbalanced%20Dataset%20Manipulation.ipynb)
     * Imbalanced Data Manipulation | Tomek's Link | SMOTE | SMOTETomek
-
-
----
-## Pending Topics
-
-* `Logistic Regression`
-
-* `Entity Embedding`
-
-* `Recommender System`
