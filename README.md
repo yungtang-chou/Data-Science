@@ -12,6 +12,17 @@ The goal of this repository is to summarize and organize my knowledge for machin
 | CatBoost | 0.07514 | 250 / 3770 | 6.6% |
 | **Stacking** | **0.07505** | **120 / 3770** | **3.2%** |
 
+
+* **Restaurant Recommender System** [[Repository]](https://github.com/patrick-ytchou/Restaurant-Recommender-System)
+
+***Project Introduction***
+This is a recommender system using matrix factorization and deep learning-based residual learning methods hosted on AWS EC2 instances. It aims to provide a interface for user to input its preference to different kinds of movies. From their initial input, the model will generate recommendations accordingly.
+
+* **Customer Review Generation** [[Repository]](https://github.com/patrick-ytchou/Customer-Review-Generation)
+
+***Project Introduction***
+This is aa text generation mdoel trained via OpenAI's GPT-2 language model. Transfer learning is implemented to fine-tune general GPT-2 model so that it can generate customer reviews better.
+
 ---
 ### Machine Learning Notes
 
@@ -20,8 +31,8 @@ The goal of this repository is to summarize and organize my knowledge for machin
 * **Yelp Review Analysis: Sentiment Analysis & Topic Modeling** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/SpecialTopic/Yelp%20Review%20Analysis%20--%20Sentiment%20Analysis%20%26%20Topic%20Modeling.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/SpecialTopic/Yelp%20Review%20Analysis%20--%20Sentiment%20Analysis%20%26%20Topic%20Modeling.ipynb)
     * Sentiment Analysis (Textblob, VADER, Afinn)| Topic Modeling | Natural Language Processing 
 
-* **Market Basket Analysis: Association Rule Mining** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/Notes/AssociationRules/Market%20Basket%20Analysis%20--%20Association%20Rule%20Explained.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Notes/AssociationRules/Market%20Basket%20Analysis%20--%20Association%20Rule%20Explained.ipynb)
-    * Market Basket Analysis | Apriori Algorithm
+* **Market Basket Analysis: Association Rule Mining** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/SpecialTopic/Market%20Basket%20Analysis%20--%20Association%20Rule%20Explained.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/SpecialTopic/Market%20Basket%20Analysis%20--%20Association%20Rule%20Explained.ipynb)
+    * Association Rule Mining | Market Basket Analysis | Apriori Algorithm
 
 * **Model Explanation with Santander Dataset** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/SpecialTopic/Model%20Explanation%20with%20Santander%20Dataset.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/SpecialTopic/Model%20Explanation%20with%20Santander%20Dataset.ipynb)
 	* Tree Visualization | Permutation Feature Importance | Partial Dependence Plot | SHAP Values
@@ -89,6 +100,9 @@ The goal of this repository is to summarize and organize my knowledge for machin
 
 * **Cohort Analysis & RFM Model in Python** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/Analytics/Cohort%20Analysis%20%26%20RFM%20Model%20in%20Python.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Analytics/Cohort%20Analysis%20%26%20RFM%20Model%20in%20Python.ipynb)
     * Time-based Cohort Analysis | HeatMap
+
+* **BIGTARGET Uplift Modeling** [[Notebook]]() | [[nbviewer]]()
+    * xxxxxx
 
 
 #### **Feature Engineering**
