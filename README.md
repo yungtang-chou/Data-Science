@@ -101,9 +101,8 @@ This is aa text generation mdoel trained via OpenAI's GPT-2 language model. Tran
 * **Cohort Analysis & RFM Model in Python** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/Analytics/Cohort%20Analysis%20%26%20RFM%20Model%20in%20Python.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Analytics/Cohort%20Analysis%20%26%20RFM%20Model%20in%20Python.ipynb)
     * Time-based Cohort Analysis | HeatMap
 
-* **BIGTARGET Uplift Modeling** [[Notebook]]() | [[nbviewer]]()
-    * xxxxxx
-
+* **BIGTARGET Uplift Modeling** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/Analytics/Marketing%20Campaign%20Analysis%20with%20Uplift%20Modeling.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/Analytics/Marketing%20Campaign%20Analysis%20with%20Uplift%20Modeling.ipynb)
+    * Uplift Modeling | Causal Inference | Two-Models Modeling | Class Transformation 
 
 #### **Feature Engineering**
 
