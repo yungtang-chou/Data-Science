@@ -16,11 +16,13 @@ The goal of this repository is to summarize and organize my knowledge for machin
 * **Restaurant Recommender System** [[Repository]](https://github.com/patrick-ytchou/Restaurant-Recommender-System)
 
 ***Project Introduction***
+
 This is a recommender system using matrix factorization and deep learning-based residual learning methods hosted on AWS EC2 instances. It aims to provide a interface for user to input its preference to different kinds of movies. From their initial input, the model will generate recommendations accordingly.
 
 * **Customer Review Generation** [[Repository]](https://github.com/patrick-ytchou/Customer-Review-Generation)
 
 ***Project Introduction***
+
 This is aa text generation mdoel trained via OpenAI's GPT-2 language model. Transfer learning is implemented to fine-tune general GPT-2 model so that it can generate customer reviews better.
 
 ---
