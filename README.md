@@ -110,3 +110,23 @@ This is aa text generation mdoel trained via OpenAI's GPT-2 language model. Tran
 
 * **Imbalanced Data Manipulation** [[Notebook]](https://github.com/patrick-ytchou/Data-Science/blob/master/FeatureEngineering/Imbalanced%20Dataset%20Manipulation.ipynb) | [[nbviewer]](https://nbviewer.jupyter.org/github/patrick-ytchou/Data-Science/blob/master/FeatureEngineering/Imbalanced%20Dataset%20Manipulation.ipynb)
     * Imbalanced Data Manipulation | Tomek's Link | SMOTE | SMOTETomek
+
+---
+### Resource
+
+This section includes links for resources for future reference.
+
+**Statistics**
+[[Book] Distribution Explorer](https://distribution-explorer.github.io/)
+
+**Machine Learning**
+[[Book] Interpretable Machine Learning](https://christophm.github.io/interpretable-ml-book/)
+
+[[Book] The Machine & Deep Learning Compendium](https://mlcompendium.gitbook.io/machine-and-deep-learning-compendium/)
+
+[[Notes] Transformers from Scratch](https://e2eml.school/transformers.html)
+
+[[Slides] Causal Inference in Marketing](https://www.slideshare.net/TAWEIHUANG/causal-inference-in-marketing?fbclid=IwAR0F5pZHaIAXdDdchhX5K3v_a0vc5AwFZuVS3yDXqAjcS3jjURMFlUvl7Q0)
+
+**MLOps**
+[[Courses] MLOps-Basics](https://github.com/graviraja/MLOps-Basics)
